@@ -1,5 +1,7 @@
+@import "variables";
+
 html {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    background-color: #eee;
+    background-color: $bg-color;
 }
