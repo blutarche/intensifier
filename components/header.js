@@ -2,8 +2,8 @@ var Header = React.createClass({
   render: function() {
     return (
         <div className="Header">
-            <h1>Intensifies</h1>
-            <h2>The most intense gif maker</h2>
+            <h2>Intensifies</h2>
+            <h3>The most intense gif maker</h3>
         </div>
     );
   }
