@@ -1,6 +1,8 @@
+@charset "UTF-8";
+
 @import "variables";
 
-html {
+html, body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     background-color: $bg-color;
