@@ -8,6 +8,7 @@ var Header = React.createClass({
     );
   }
 });
+
 ReactDOM.render(
   <Header />,
   document.getElementById('head')
