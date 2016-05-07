@@ -10,7 +10,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <div className="col s12 center-align">
+        <div className="col s12">
             <Header />
             <Drawing />
             <FileInput />

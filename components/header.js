@@ -7,10 +7,10 @@ export default class Header extends React.Component {
 
   render() {
     return (
-        <div className="Header">
-            <h2>Intensifies</h2>
-            <h3>The most intense gif maker</h3>
-        </div>
+      <div className="Header text-center">
+        <h3>Intensifier</h3>
+        <h6>The most intense gif maker</h6>
+      </div>
     );
   }
 };
