@@ -1,7 +1,10 @@
 var FileInput = React.createClass({
   render: function() {
     return (
-        <input type="file" name="picture" accept="image/*" />
+      <button className="btn btn-hg btn-embossed btn-primary">
+        <i className="fa fa-picture-o" aria-hidden="true"></i> Upload your own photo
+        <input className="upload" type="file" name="picture" accept="image/*" />
+      </button>
     );
   }
 });
