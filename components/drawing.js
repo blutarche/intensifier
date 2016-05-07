@@ -1,4 +1,4 @@
-var randomMax = 10;
+var randomMax = 3;
 var shiftPosition = 0;
 var middleRange = 0;
 var img = new Image();
