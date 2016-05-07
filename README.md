@@ -16,3 +16,9 @@ npm install
 ```
 npm start
 ```
+
+
+### webpack create bundle.js
+```
+webpack --inline --hot
+```
