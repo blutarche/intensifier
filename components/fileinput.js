@@ -9,9 +9,19 @@ export default class FileInput extends React.Component {
     super(props);
     this.fileChange = this.fileChange.bind(this);
   }
-  fileChange() {
-    console.log('Selected file:', event.target.files[0]);
-    alert("f");
+  fileChange(e) {
+    console.log("WTFFF");
+    var reader = new FileReader();
+    var file = e.target.files[0];
+
+    reader.onload = function(upload) {
+      this.setState({
+        data_uri: upload.target.result,
+      });
+    }
+
+    console.log(file);
+    reader.readAsDataURL(file);
   }
   render() {
     return (
@@ -20,7 +30,7 @@ export default class FileInput extends React.Component {
           <b>Current picture:</b> <span></span>
         </div>
         <button className="btn btn-hg btn-embossed btn-primary upload">
-          <i className="fa fa-picture-o" aria-hidden="true"></i> Upload youre own photo
+          <i className="fa fa-picture-o" aria-hidden="true"></i> Upload your own photo
           <input ref="photo" type="file" name="picture" accept="image/*" onChange={this.fileChange} />
         </button>
       </div>

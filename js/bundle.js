@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e8e8df02bcb412043a98"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6d8a3f3254c2749d099d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25733,27 +25733,50 @@
 	  };
 	}
 
+	var nameStyle = {
+	  display: "none"
+	};
+
 	var FileInput = _wrapComponent("FileInput")(function (_React$Component) {
 	  _inherits(FileInput, _React$Component);
 
-	  function FileInput() {
+	  function FileInput(props) {
 	    _classCallCheck(this, FileInput);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).call(this, props));
+
+	    _this.fileChange = _this.fileChange.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(FileInput, [{
+	    key: "fileChange",
+	    value: function fileChange(e) {
+	      console.log(e);
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
 	        { className: "text-center" },
 	        _react3.default.createElement(
+	          "div",
+	          { className: "fileName", style: nameStyle },
+	          _react3.default.createElement(
+	            "b",
+	            null,
+	            "Current picture:"
+	          ),
+	          " ",
+	          _react3.default.createElement("span", null)
+	        ),
+	        _react3.default.createElement(
 	          "button",
 	          { className: "btn btn-hg btn-embossed btn-primary upload" },
 	          _react3.default.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
-	          " Upload your own photo",
-	          _react3.default.createElement("input", { type: "file", name: "picture", accept: "image/*" })
+	          " Upload youre own photo",
+	          _react3.default.createElement("input", { ref: "photo", type: "file", name: "picture", accept: "image/*", onChange: this.fileChange })
 	        )
 	      );
 	    }
