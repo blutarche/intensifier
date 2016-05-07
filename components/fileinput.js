@@ -5,22 +5,24 @@ var nameStyle = {
 };
 
 export default class FileInput extends React.Component {
+
   constructor(props) {
     super(props);
+    this.state = {imageDataURL: ''};
     this.fileChange = this.fileChange.bind(this);
   }
   fileChange(e) {
-    console.log("WTFFF");
     var reader = new FileReader();
     var file = e.target.files[0];
+    window.file = file;
 
-    reader.onload = function(upload) {
+    console.log(file);
+    reader.onloadend = () => {
       this.setState({
-        data_uri: upload.target.result,
+        imageDataURL: reader.result
       });
     }
 
-    console.log(file);
     reader.readAsDataURL(file);
   }
   render() {
@@ -33,6 +35,7 @@ export default class FileInput extends React.Component {
           <i className="fa fa-picture-o" aria-hidden="true"></i> Upload your own photo
           <input ref="photo" type="file" name="picture" accept="image/*" onChange={this.fileChange} />
         </button>
+
       </div>
     );
   }

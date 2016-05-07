@@ -2,8 +2,8 @@ module.exports = {
 //    context: __dirname + "/app",
     entry: "./main.js",
     output: {
-	    path: __dirname + "/js",
-	    filename: "bundle.js"
+	    path: __dirname,
+	    filename: "./bundle.js"
 	},
 	module: {
 	  loaders: [

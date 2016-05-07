@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6d8a3f3254c2749d099d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1477de5fbb48b248cf71"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25690,7 +25690,7 @@
 /* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -25716,12 +25716,12 @@
 
 	var _components = {
 	  FileInput: {
-	    displayName: "FileInput"
+	    displayName: 'FileInput'
 	  }
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/fileinput.js",
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/fileinput.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25737,7 +25737,7 @@
 	  display: "none"
 	};
 
-	var FileInput = _wrapComponent("FileInput")(function (_React$Component) {
+	var FileInput = _wrapComponent('FileInput')(function (_React$Component) {
 	  _inherits(FileInput, _React$Component);
 
 	  function FileInput(props) {
@@ -25745,38 +25745,52 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).call(this, props));
 
+	    _this.state = { imageDataURL: '' };
 	    _this.fileChange = _this.fileChange.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(FileInput, [{
-	    key: "fileChange",
+	    key: 'fileChange',
 	    value: function fileChange(e) {
-	      console.log(e);
+	      var _this2 = this;
+
+	      var reader = new FileReader();
+	      var file = e.target.files[0];
+	      window.file = file;
+
+	      console.log(file);
+	      reader.onloadend = function () {
+	        _this2.setState({
+	          imageDataURL: reader.result
+	        });
+	      };
+
+	      reader.readAsDataURL(file);
 	    }
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      return _react3.default.createElement(
-	        "div",
-	        { className: "text-center" },
+	        'div',
+	        { className: 'text-center' },
 	        _react3.default.createElement(
-	          "div",
-	          { className: "fileName", style: nameStyle },
+	          'div',
+	          { className: 'fileName', style: nameStyle },
 	          _react3.default.createElement(
-	            "b",
+	            'b',
 	            null,
-	            "Current picture:"
+	            'Current picture:'
 	          ),
-	          " ",
-	          _react3.default.createElement("span", null)
+	          ' ',
+	          _react3.default.createElement('span', null)
 	        ),
 	        _react3.default.createElement(
-	          "button",
-	          { className: "btn btn-hg btn-embossed btn-primary upload" },
-	          _react3.default.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
-	          " Upload youre own photo",
-	          _react3.default.createElement("input", { ref: "photo", type: "file", name: "picture", accept: "image/*", onChange: this.fileChange })
+	          'button',
+	          { className: 'btn btn-hg btn-embossed btn-primary upload' },
+	          _react3.default.createElement('i', { className: 'fa fa-picture-o', 'aria-hidden': 'true' }),
+	          ' Upload your own photo',
+	          _react3.default.createElement('input', { ref: 'photo', type: 'file', name: 'picture', accept: 'image/*', onChange: this.fileChange })
 	        )
 	      );
 	    }
