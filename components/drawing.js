@@ -25,10 +25,11 @@ var Drawing = React.createClass({
     canvas.height = img.height - randomMax;
     var ctx = canvas.getContext('2d');
     var width = canvas.width;
-    var height = canvas.height;  
-    var shiftPosition = Math.floor((Math.random() * randomMax) - middleRange);
-    var x = -middleRange + shiftPosition;
-    var y = -middleRange + shiftPosition;
+    var height = canvas.height;
+    var shiftPositionX = Math.floor((Math.random() * randomMax) - middleRange);
+    var shiftPositionY = Math.floor((Math.random() * randomMax) - middleRange);
+    var x = -middleRange + shiftPositionX;
+    var y = -middleRange + shiftPositionY;
     var w = width - middleRange;
     var h = height - middleRange;
     ctx.clearRect(0, 0, width, height);
