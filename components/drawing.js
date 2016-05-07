@@ -6,21 +6,23 @@ var img = new Image();
 var Drawing = React.createClass({
   getInitialState: function() {
     return {
-      url: 'some-url-image'
+      url: 'https://graph.facebook.com/1021235868/picture?width=500'
     };
   },
 
-  componentDidMount: function() {
+  componentWillMount: function() {
     img.src = this.state.url;
+  },
+
+  componentDidMount: function() {
     middleRange = randomMax / 2;
-    var canvas = this.refs.canvas;
-    canvas.width = img.width - randomMax;
-    canvas.height = img.height - randomMax;
     setInterval(this.updatePosition, 10);
   },
 
   updatePosition: function() {
     var canvas = this.refs.canvas;
+    canvas.width = img.width - randomMax;
+    canvas.height = img.height - randomMax;
     var ctx = canvas.getContext('2d');
     var width = canvas.width;
     var height = canvas.height;  
