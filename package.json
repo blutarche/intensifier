@@ -1,0 +1,26 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+	"start": "./node_modules/.bin/webpack-dev-server --inline --hot --port 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Supanut Apikulvanich",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.14.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "react-dom": "^0.14.6",
+    "react-transform-hmr": "^1.0.1",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

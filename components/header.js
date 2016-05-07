@@ -1,15 +1,16 @@
-var Header = React.createClass({
-  render: function() {
+import React from 'react';
+
+export default class Header extends React.Component {
+  constructor() {
+  	super();
+  }
+
+  render() {
     return (
-      <div className="Header">
+      <div className="Header text-center">
         <h3>Intensifier</h3>
         <h6>The most intense gif maker</h6>
       </div>
     );
   }
-});
-
-ReactDOM.render(
-  <Header />,
-  document.getElementById('head')
-);
+};

@@ -1,25 +1,26 @@
+import React from 'react';
+
 var randomMax = 3;
 var shiftPosition = 0;
 var middleRange = 0;
 var img = new Image();
 
-var Drawing = React.createClass({
-  getInitialState: function() {
-    return {
-      url: 'https://graph.facebook.com/1021235868/picture?width=500'
-    };
-  },
+export default class Drawing extends React.Component {
+  constructor() {
+    super();
+    this.state = {url: 'https://graph.facebook.com/1021235868/picture?width=500'};
+  }
 
-  componentWillMount: function() {
+  componentWillMount() {
     img.src = this.state.url;
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     middleRange = randomMax / 2;
-    setInterval(this.updatePosition, 10);
-  },
+    setInterval(this.updatePosition.bind(this), 10);
+  }
 
-  updatePosition: function() {
+  updatePosition() {
     var canvas = this.refs.canvas;
     canvas.width = img.width - randomMax;
     canvas.height = img.height - randomMax;
@@ -34,14 +35,13 @@ var Drawing = React.createClass({
     var h = height - middleRange;
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(img, x, y);
-  },
-
-  render: function() {
-    return <canvas ref="canvas" width={300} height={300} />
   }
-});
 
-ReactDOM.render(
-  <Drawing />,
-  document.getElementById('drawing')
-);
+  render() {
+    return (
+      <div className="text-center">
+        <canvas ref="canvas" width={300} height={300} />
+      </div>
+    )
+  }
+};
