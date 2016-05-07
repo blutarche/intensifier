@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1477de5fbb48b248cf71"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "32b66170f35363fb26d1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25733,10 +25733,6 @@
 	  };
 	}
 
-	var nameStyle = {
-	  display: "none"
-	};
-
 	var FileInput = _wrapComponent('FileInput')(function (_React$Component) {
 	  _inherits(FileInput, _React$Component);
 
@@ -25745,7 +25741,10 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).call(this, props));
 
-	    _this.state = { imageDataURL: '' };
+	    _this.state = {
+	      imageDataURL: '',
+	      imageName: '',
+	      nameStyle: { display: "none" } };
 	    _this.fileChange = _this.fileChange.bind(_this);
 	    return _this;
 	  }
@@ -25762,7 +25761,9 @@
 	      console.log(file);
 	      reader.onloadend = function () {
 	        _this2.setState({
-	          imageDataURL: reader.result
+	          imageDataURL: reader.result,
+	          imageName: file.name,
+	          nameStyle: { display: "block" }
 	        });
 	      };
 
@@ -25771,19 +25772,24 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log("dafuq");
 	      return _react3.default.createElement(
 	        'div',
 	        { className: 'text-center' },
 	        _react3.default.createElement(
 	          'div',
-	          { className: 'fileName', style: nameStyle },
+	          { className: 'fileName', style: this.state.nameStyle },
 	          _react3.default.createElement(
 	            'b',
 	            null,
 	            'Current picture:'
 	          ),
 	          ' ',
-	          _react3.default.createElement('span', null)
+	          _react3.default.createElement(
+	            'span',
+	            null,
+	            this.state.imageName
+	          )
 	        ),
 	        _react3.default.createElement(
 	          'button',

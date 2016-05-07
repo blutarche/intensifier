@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './header.js';
-import Drawing from './drawing.js';
-import FileInput from './fileinput.js';
+import Header from './header';
+import Drawing from './drawing';
+import FileInput from './fileinput';
 
 export default class App extends React.Component {
   constructor() {

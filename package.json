@@ -2,12 +2,12 @@
   "name": "intensifier",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --inline --hot --port 3000",
+    "start": "webpack --watch --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Supanut Apikulvanich",
+  "author": "Aikdanai Sidhikosol",
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.11.2",
