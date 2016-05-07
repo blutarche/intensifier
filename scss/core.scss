@@ -2,16 +2,16 @@
 
 @import "variables";
 
-
 html, body {
     background-color: $bg-color;
 }
 
-#fileinput button {
+.btn.upload {
     position: relative;
     overflow: hidden;
 }
-#fileinput button input[type="file"] {
+
+.btn.upload input[type=file] {
     position: absolute;
     top: 0;
     right: 0;

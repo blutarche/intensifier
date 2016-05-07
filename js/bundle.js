@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b6e9ee0072b9d569f139"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e8e8df02bcb412043a98"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -648,7 +648,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/Supanut/github/intensifier/components/app.js',
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/app.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -674,7 +674,7 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        'div',
-	        { className: 'col s12' },
+	        { className: 'col-xs-12' },
 	        _react3.default.createElement(_header2.default, null),
 	        _react3.default.createElement(_drawing2.default, null),
 	        _react3.default.createElement(_fileinput2.default, null)
@@ -869,6 +869,9 @@
 	var queueIndex = -1;
 
 	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -25524,7 +25527,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/header.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/header.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25607,7 +25610,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/Supanut/github/intensifier/components/drawing.js',
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/drawing.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25619,7 +25622,7 @@
 	  };
 	}
 
-	var randomMax = 10;
+	var randomMax = 3;
 	var shiftPosition = 0;
 	var middleRange = 0;
 	var img = new Image();
@@ -25718,7 +25721,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/fileinput.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/fileinput.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25747,10 +25750,10 @@
 	        { className: "text-center" },
 	        _react3.default.createElement(
 	          "button",
-	          { className: "btn btn-hg btn-embossed btn-primary" },
+	          { className: "btn btn-hg btn-embossed btn-primary upload" },
 	          _react3.default.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
 	          " Upload your own photo",
-	          _react3.default.createElement("input", { className: "upload", type: "file", name: "picture", accept: "image/*" })
+	          _react3.default.createElement("input", { type: "file", name: "picture", accept: "image/*" })
 	        )
 	      );
 	    }

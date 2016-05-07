@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header.js';
-import Drawing from './drawing';
-import FileInput from './fileinput';
+import Drawing from './drawing.js';
+import FileInput from './fileinput.js';
 
 export default class App extends React.Component {
   constructor() {
@@ -10,10 +10,10 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <div className="col s12">
-            <Header />
-            <Drawing />
-            <FileInput />
+        <div className="col-xs-12">
+          <Header />
+          <Drawing />
+          <FileInput />
         </div>
     );
   }
