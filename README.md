@@ -22,3 +22,7 @@ npm start
 ```
 webpack --inline --hot
 ```
+#### or
+```
+./node_modules/.bin/webpack --inline --hot
+```
