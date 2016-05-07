@@ -1,11 +1,11 @@
-var FileInput = React.createClass({
-  render: function() {
+import React from 'react';
+
+export default class FileInput extends React.Component {
+  render() {
     return (
+      <div>
         <input type="file" name="picture" accept="image/*" />
+      </div>
     );
   }
-});
-ReactDOM.render(
-  <FileInput />,
-  document.getElementById('fileinput')
-);
+};
