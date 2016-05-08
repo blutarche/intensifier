@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8d4488f8bf6fd3293f4b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "47adca67d9b64e0180e6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -648,7 +648,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/Supanut/github/intensifier/components/app.js',
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/app.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25527,7 +25527,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/header.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/header.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25610,7 +25610,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/Supanut/github/intensifier/components/drawing.js',
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/drawing.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25721,7 +25721,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/Supanut/github/intensifier/components/fileinput.js',
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/fileinput.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25772,7 +25772,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log("dafuq");
+	      console.log("dafuq02");
 	      return _react3.default.createElement(
 	        'div',
 	        { className: 'text-center' },

@@ -28,7 +28,7 @@ export default class FileInput extends React.Component {
     reader.readAsDataURL(file);
   }
   render() {
-    console.log("dafuq");
+    console.log("dafuq02");
     return (
       <div className="text-center">
         <div className="fileName" style={this.state.nameStyle}>

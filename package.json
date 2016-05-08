@@ -28,8 +28,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "repository": {
-	"type" : "git",
-	"url" : "https://github.com/blutarche/intensifier.git"
+	  "type" : "git",
+	  "url" : "https://github.com/blutarche/intensifier.git"
   },
   "keywords": [
   	"intensifier"
