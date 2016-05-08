@@ -8,7 +8,7 @@ var img = new Image();
 export default class Drawing extends React.Component {
   constructor() {
     super();
-    this.state = {url: 'https://graph.facebook.com/1021235868/picture?width=500'};
+    this.state = {url: ''};
   }
 
   componentWillMount() {
@@ -20,7 +20,13 @@ export default class Drawing extends React.Component {
     setInterval(this.updatePosition.bind(this), 10);
   }
 
+  drawingPicture() {
+    this.setState({url: this.props.url});
+    img.src = this.state.url;
+  }
+
   updatePosition() {
+    this.drawingPicture();
     var canvas = this.refs.canvas;
     canvas.width = img.width - randomMax;
     canvas.height = img.height - randomMax;
