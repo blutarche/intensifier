@@ -2,7 +2,6 @@ import React from 'react';
 
 
 export default class FileInput extends React.Component {
-
   constructor() {
     super();
     this.state = {
@@ -11,24 +10,14 @@ export default class FileInput extends React.Component {
       nameStyle: {display: "none"}};
     this.fileChange = this.fileChange.bind(this);
   }
+
   fileChange(e) {
     var reader = new FileReader();
     var file = e.target.files[0];
     this.props.updatePicture(URL.createObjectURL(file));
-
-    console.log(file);
-    reader.onloadend = () => {
-      this.setState({
-        imageDataURL: reader.result,
-        imageName: file.name,
-        nameStyle: {display: "block"}
-      });
-    }
-
-    reader.readAsDataURL(file);
   }
+
   render() {
-    console.log("dafuq02");
     return (
       <div className="text-center">
         <div className="fileName" style={this.state.nameStyle}>
@@ -38,7 +27,6 @@ export default class FileInput extends React.Component {
           <i className="fa fa-picture-o" aria-hidden="true"></i> Upload your own photo
           <input ref="photo" type="file" name="picture" accept="image/*" onChange={this.fileChange} />
         </button>
-
       </div>
     );
   }
