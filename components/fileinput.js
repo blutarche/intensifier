@@ -3,8 +3,8 @@ import React from 'react';
 
 export default class FileInput extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       imageDataURL: '',
       imageName: '',
@@ -14,7 +14,7 @@ export default class FileInput extends React.Component {
   fileChange(e) {
     var reader = new FileReader();
     var file = e.target.files[0];
-    window.file = file;
+    this.props.updatePicture(URL.createObjectURL(file));
 
     console.log(file);
     reader.onloadend = () => {

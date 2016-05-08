@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "47adca67d9b64e0180e6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cad793893075b65b4c56"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -666,18 +666,26 @@
 	  function App() {
 	    _classCallCheck(this, App);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+
+	    _this.state = { url: 'https://graph.facebook.com/1021235868/picture?width=500' };
+	    return _this;
 	  }
 
 	  _createClass(App, [{
+	    key: 'updatePicture',
+	    value: function updatePicture(url) {
+	      this.setState({ url: url });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react3.default.createElement(
 	        'div',
 	        { className: 'col-xs-12' },
 	        _react3.default.createElement(_header2.default, null),
-	        _react3.default.createElement(_drawing2.default, null),
-	        _react3.default.createElement(_fileinput2.default, null)
+	        _react3.default.createElement(_drawing2.default, { url: this.state.url }),
+	        _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePicture.bind(this) })
 	      );
 	    }
 	  }]);
@@ -25635,7 +25643,7 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Drawing).call(this));
 
-	    _this.state = { url: 'https://graph.facebook.com/1021235868/picture?width=500' };
+	    _this.state = { url: '' };
 	    return _this;
 	  }
 
@@ -25651,8 +25659,15 @@
 	      setInterval(this.updatePosition.bind(this), 10);
 	    }
 	  }, {
+	    key: 'drawingPicture',
+	    value: function drawingPicture() {
+	      this.setState({ url: this.props.url });
+	      img.src = this.state.url;
+	    }
+	  }, {
 	    key: 'updatePosition',
 	    value: function updatePosition() {
+	      this.drawingPicture();
 	      var canvas = this.refs.canvas;
 	      canvas.width = img.width - randomMax;
 	      canvas.height = img.height - randomMax;
@@ -25736,10 +25751,10 @@
 	var FileInput = _wrapComponent('FileInput')(function (_React$Component) {
 	  _inherits(FileInput, _React$Component);
 
-	  function FileInput(props) {
+	  function FileInput() {
 	    _classCallCheck(this, FileInput);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).call(this));
 
 	    _this.state = {
 	      imageDataURL: '',
@@ -25756,7 +25771,7 @@
 
 	      var reader = new FileReader();
 	      var file = e.target.files[0];
-	      window.file = file;
+	      this.props.updatePicture(URL.createObjectURL(file));
 
 	      console.log(file);
 	      reader.onloadend = function () {
