@@ -4,20 +4,18 @@ var randomMax = 3;
 var shiftPosition = 0;
 var middleRange = 0;
 var img = new Image();
+var ouputImage = new Image();
 
 export default class Drawing extends React.Component {
   constructor() {
     super();
     this.state = {url: ''};
     shiftPosition = randomMax;
-  }
-
-  componentWillMount() {
-    img.src = this.state.url;
+    middleRange = randomMax / 2;
   }
 
   componentDidMount() {
-    middleRange = randomMax / 2;
+    this.drawingPicture();
     setInterval(this.updatePosition.bind(this), 10);
   }
 
@@ -26,8 +24,13 @@ export default class Drawing extends React.Component {
     img.src = this.state.url;
   }
 
-  updatePosition() {
+  componentWillUpdate() {
     this.drawingPicture();
+    // ctx.drawImage ...
+    // maximum stack call exceed error console if use this T__T
+  }
+
+  updatePosition() {
     var canvas = this.refs.canvas;
     canvas.width = img.width - randomMax;
     canvas.height = img.height - randomMax;
