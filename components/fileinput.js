@@ -5,9 +5,9 @@ export default class FileInput extends React.Component {
   constructor() {
     super();
     this.state = {
-      imageDataURL: '',
       imageName: '',
-      nameStyle: {display: "none"}};
+      nameStyle: {display: "none"}
+    };
     this.fileChange = this.fileChange.bind(this);
   }
 
@@ -15,6 +15,11 @@ export default class FileInput extends React.Component {
     var reader = new FileReader();
     var file = e.target.files[0];
     this.props.updatePicture(URL.createObjectURL(file));
+    window.file = file;
+    this.setState({
+      imageName: file.name,
+      nameStyle: {display: "block"}
+    });
   }
 
   render() {
