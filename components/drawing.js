@@ -9,6 +9,7 @@ export default class Drawing extends React.Component {
   constructor() {
     super();
     this.state = {url: ''};
+    shiftPosition = randomMax;
   }
 
   componentWillMount() {
@@ -33,8 +34,11 @@ export default class Drawing extends React.Component {
     var ctx = canvas.getContext('2d');
     var width = canvas.width;
     var height = canvas.height;
-    var shiftPositionX = Math.floor((Math.random() * randomMax) - middleRange);
-    var shiftPositionY = Math.floor((Math.random() * randomMax) - middleRange);
+    shiftPosition *= -1;
+    var shiftPositionX = shiftPosition;
+    var shiftPositionY = 0;
+    // var shiftPositionX = Math.floor((Math.random() * randomMax) - middleRange);
+    // var shiftPositionY = Math.floor((Math.random() * randomMax) - middleRange);
     var x = -middleRange + shiftPositionX;
     var y = -middleRange + shiftPositionY;
     var w = width - middleRange;

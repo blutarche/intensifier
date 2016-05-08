@@ -1,2 +1,2 @@
 #!/bin/bash
-./node_modules/.bin/webpack --inline --watch
+./node_modules/.bin/webpack --inline --hot --watch

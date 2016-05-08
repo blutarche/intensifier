@@ -28,7 +28,7 @@ webpack --inline --hot
 ```
 #### or
 ```
-./build
+./webpack-build
 ```
 
 ### optimize

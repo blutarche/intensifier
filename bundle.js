@@ -109,7 +109,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/app.js',
+	  filename: '/Users/Supanut/github/intensifier/components/app.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -24996,7 +24996,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/header.js",
+	  filename: "/Users/Supanut/github/intensifier/components/header.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25079,7 +25079,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/drawing.js',
+	  filename: '/Users/Supanut/github/intensifier/components/drawing.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25105,6 +25105,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Drawing).call(this));
 
 	    _this.state = { url: '' };
+	    shiftPosition = randomMax;
 	    return _this;
 	  }
 
@@ -25135,8 +25136,11 @@
 	      var ctx = canvas.getContext('2d');
 	      var width = canvas.width;
 	      var height = canvas.height;
-	      var shiftPositionX = Math.floor(Math.random() * randomMax - middleRange);
-	      var shiftPositionY = Math.floor(Math.random() * randomMax - middleRange);
+	      shiftPosition *= -1;
+	      var shiftPositionX = shiftPosition;
+	      var shiftPositionY = 0;
+	      // var shiftPositionX = Math.floor((Math.random() * randomMax) - middleRange);
+	      // var shiftPositionY = Math.floor((Math.random() * randomMax) - middleRange);
 	      var x = -middleRange + shiftPositionX;
 	      var y = -middleRange + shiftPositionY;
 	      var w = width - middleRange;
@@ -25197,7 +25201,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/fileinput.js',
+	  filename: '/Users/Supanut/github/intensifier/components/fileinput.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
