@@ -35,3 +35,6 @@ webpack --inline --hot
 ```
 webpack --inline --hot --optimize-minimize --optimize-dedupe
 ```
+
+## References
+[Canvas to GIF](https://github.com/antimatter15/jsgif)
