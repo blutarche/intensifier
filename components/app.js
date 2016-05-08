@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import Drawing from './drawing';
 import FileInput from './fileinput';
+import Download from './download';
 
 export default class App extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
           <Header />
           <Drawing url={this.state.url} />
           <FileInput updatePicture={this.updatePicture.bind(this)} />
+          <Download />
         </div>
     );
   }
