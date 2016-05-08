@@ -26,6 +26,10 @@ webpack --inline --hot
 ```
 ./node_modules/.bin/webpack --inline --hot
 ```
+#### or
+```
+./build
+```
 
 ### optimize
 ```
