@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d661a78ea058b3fbcae9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "31d15845bb600ac82144"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -570,7 +570,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/intense/";
 
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -25638,11 +25638,13 @@
 	  };
 	}
 
-	var randomMax = 3;
+	var randomMax = 1.5;
 	var shiftPosition = 0;
 	var middleRange = 0;
 	var img = new Image();
 	var ouputImage = new Image();
+	var rotationRound = 0;
+	var maxFrame = 3;
 
 	var Drawing = _wrapComponent('Drawing')(function (_React$Component) {
 	  _inherits(Drawing, _React$Component);
@@ -25662,7 +25664,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.drawingPicture();
-	      setInterval(this.updatePosition.bind(this), 10);
+	      setInterval(this.updatePosition.bind(this), 20);
 	    }
 	  }, {
 	    key: 'drawingPicture',
@@ -25687,16 +25689,15 @@
 	      var width = canvas.width;
 	      var height = canvas.height;
 	      shiftPosition *= -1;
-	      var shiftPositionX = shiftPosition;
-	      var shiftPositionY = 0;
-	      // var shiftPositionX = Math.floor((Math.random() * randomMax) - middleRange);
-	      // var shiftPositionY = Math.floor((Math.random() * randomMax) - middleRange);
+	      var shiftPositionX = randomMax * Math.cos(Math.PI * 2 * rotationRound / maxFrame);
+	      var shiftPositionY = randomMax * Math.sin(Math.PI * 2 * rotationRound / maxFrame);
 	      var x = -middleRange + shiftPositionX;
 	      var y = -middleRange + shiftPositionY;
 	      var w = width - middleRange;
 	      var h = height - middleRange;
 	      ctx.clearRect(0, 0, width, height);
 	      ctx.drawImage(img, x, y);
+	      rotationRound = (rotationRound + 1) % maxFrame;
 	    }
 	  }, {
 	    key: 'render',
@@ -25720,7 +25721,7 @@
 /* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -25746,12 +25747,12 @@
 
 	var _components = {
 	  FileInput: {
-	    displayName: 'FileInput'
+	    displayName: "FileInput"
 	  }
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/fileinput.js',
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/fileinput.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25763,7 +25764,7 @@
 	  };
 	}
 
-	var FileInput = _wrapComponent('FileInput')(function (_React$Component) {
+	var FileInput = _wrapComponent("FileInput")(function (_React$Component) {
 	  _inherits(FileInput, _React$Component);
 
 	  function FileInput() {
@@ -25772,7 +25773,6 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).call(this));
 
 	    _this.state = {
-	      imageName: '',
 	      nameStyle: { display: "none" }
 	    };
 	    _this.fileChange = _this.fileChange.bind(_this);
@@ -25780,44 +25780,28 @@
 	  }
 
 	  _createClass(FileInput, [{
-	    key: 'fileChange',
+	    key: "fileChange",
 	    value: function fileChange(e) {
 	      var reader = new FileReader();
 	      var file = e.target.files[0];
 	      this.props.updatePicture(URL.createObjectURL(file));
 	      window.file = file;
 	      this.setState({
-	        imageName: file.name,
 	        nameStyle: { display: "block" }
 	      });
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react3.default.createElement(
-	        'div',
-	        { className: 'text-center' },
+	        "div",
+	        { className: "text-center" },
 	        _react3.default.createElement(
-	          'div',
-	          { className: 'fileName', style: this.state.nameStyle },
-	          _react3.default.createElement(
-	            'b',
-	            null,
-	            'Current picture:'
-	          ),
-	          ' ',
-	          _react3.default.createElement(
-	            'span',
-	            null,
-	            this.state.imageName
-	          )
-	        ),
-	        _react3.default.createElement(
-	          'button',
-	          { className: 'btn btn-hg btn-embossed btn-primary upload' },
-	          _react3.default.createElement('i', { className: 'fa fa-picture-o', 'aria-hidden': 'true' }),
-	          ' Upload photo',
-	          _react3.default.createElement('input', { ref: 'photo', type: 'file', name: 'picture', accept: 'image/*', onChange: this.fileChange })
+	          "button",
+	          { className: "btn btn-hg btn-embossed btn-primary upload" },
+	          _react3.default.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
+	          " Upload photo",
+	          _react3.default.createElement("input", { ref: "photo", type: "file", name: "picture", accept: "image/*", onChange: this.fileChange })
 	        )
 	      );
 	    }

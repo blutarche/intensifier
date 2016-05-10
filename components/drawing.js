@@ -1,6 +1,6 @@
 import React from 'react';
 
-var randomMax = 2;
+var randomMax = 1.5;
 var shiftPosition = 0;
 var middleRange = 0;
 var img = new Image();
@@ -18,7 +18,7 @@ export default class Drawing extends React.Component {
 
   componentDidMount() {
     this.drawingPicture();
-    setInterval(this.updatePosition.bind(this), 50);
+    setInterval(this.updatePosition.bind(this), 20);
   }
 
   drawingPicture() {
