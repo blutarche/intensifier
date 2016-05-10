@@ -1,10 +1,12 @@
 import React from 'react';
 
-var randomMax = 3;
+var randomMax = 2;
 var shiftPosition = 0;
 var middleRange = 0;
 var img = new Image();
 var ouputImage = new Image();
+var rotationRound = 0;
+var maxFrame = 3;
 
 export default class Drawing extends React.Component {
   constructor() {
@@ -16,7 +18,7 @@ export default class Drawing extends React.Component {
 
   componentDidMount() {
     this.drawingPicture();
-    setInterval(this.updatePosition.bind(this), 10);
+    setInterval(this.updatePosition.bind(this), 50);
   }
 
   drawingPicture() {
@@ -38,16 +40,15 @@ export default class Drawing extends React.Component {
     var width = canvas.width;
     var height = canvas.height;
     shiftPosition *= -1;
-    var shiftPositionX = shiftPosition;
-    var shiftPositionY = 0;
-    // var shiftPositionX = Math.floor((Math.random() * randomMax) - middleRange);
-    // var shiftPositionY = Math.floor((Math.random() * randomMax) - middleRange);
+    var shiftPositionX = randomMax * Math.cos(Math.PI * 2 * rotationRound / maxFrame);
+    var shiftPositionY = randomMax * Math.sin(Math.PI * 2 * rotationRound / maxFrame);
     var x = -middleRange + shiftPositionX;
     var y = -middleRange + shiftPositionY;
     var w = width - middleRange;
     var h = height - middleRange;
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(img, x, y);
+    rotationRound = (rotationRound + 1) % maxFrame;
   }
 
   render() {
