@@ -3,8 +3,7 @@ module.exports = {
     entry: "./main.js",
     output: {
         filename: "bundle.js",
-	    path: __dirname,
-        publicPath: "/intense/"
+	    path: __dirname
 	},
 	module: {
 	  loaders: [

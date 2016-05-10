@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "17724824db5d703a10ee"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8d1e8a0c2249b1a961b7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -570,7 +570,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/intense/";
+/******/ 	__webpack_require__.p = "";
 
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -25569,7 +25569,7 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: "Header text-center" },
+	        { className: "header text-center" },
 	        _react3.default.createElement(
 	          "h3",
 	          null,
@@ -25700,8 +25700,12 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        'div',
-	        { className: 'text-center' },
-	        _react3.default.createElement('canvas', { ref: 'canvas', width: 300, height: 300 })
+	        { className: 'row' },
+	        _react3.default.createElement(
+	          'div',
+	          { className: 'text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3' },
+	          _react3.default.createElement('canvas', { ref: 'canvas' })
+	        )
 	      );
 	    }
 	  }]);

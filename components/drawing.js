@@ -49,8 +49,10 @@ export default class Drawing extends React.Component {
 
   render() {
     return (
-      <div className="text-center">
-        <canvas ref="canvas" width={300} height={300} />
+      <div className="row">
+        <div className="text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <canvas ref="canvas" />
+        </div>
       </div>
     )
   }

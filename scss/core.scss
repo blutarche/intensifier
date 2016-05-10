@@ -23,3 +23,9 @@ html, body {
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
+canvas {
+      background-color: $canvas-bg-color; 
+      width: 100%;
+      height: auto;
+}
