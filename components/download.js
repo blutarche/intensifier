@@ -13,7 +13,7 @@ export default class Download extends React.Component {
     return (
       <div className="text-center" style={{"marginTop": "5px"}} >
         <button className="btn btn-hg btn-danger upload" onClick={this.onClick.bind(this)} >
-            <i className="fa fa-download" aria-hidden="true"></i> Download
+            <b><i className="fa fa-download" aria-hidden="true"></i> Download</b>
         </button>
       </div>
     );
