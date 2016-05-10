@@ -8,7 +8,7 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      url: 'https://graph.facebook.com/1021235868/picture?width=500',
+      url: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg',
       imageUploaded: false
     };
   }
