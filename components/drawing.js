@@ -11,7 +11,6 @@ var maxFrame = 3;
 export default class Drawing extends React.Component {
   constructor() {
     super();
-    this.state = {url: ''};
     shiftPosition = randomMax;
     middleRange = randomMax / 2;
   }
@@ -22,14 +21,11 @@ export default class Drawing extends React.Component {
   }
 
   drawingPicture() {
-    this.setState({url: this.props.url});
-    img.src = this.state.url;
+    img.src = this.props.url;
   }
 
-  componentWillUpdate() {
+  componentDidUpdate() {
     this.drawingPicture();
-    // ctx.drawImage ...
-    // maximum stack call exceed error console if use this T__T
   }
 
   updatePosition() {
