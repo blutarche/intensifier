@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8acf466b62de0224e224"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d661a78ea058b3fbcae9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -672,14 +672,17 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
 
-	    _this.state = { url: 'https://graph.facebook.com/1021235868/picture?width=500' };
+	    _this.state = {
+	      url: 'https://graph.facebook.com/1021235868/picture?width=500',
+	      imageUploaded: false
+	    };
 	    return _this;
 	  }
 
 	  _createClass(App, [{
 	    key: 'updatePicture',
 	    value: function updatePicture(url) {
-	      this.setState({ url: url });
+	      this.setState({ url: url, imageUploaded: true });
 	    }
 	  }, {
 	    key: 'render',
@@ -690,7 +693,7 @@
 	        _react3.default.createElement(_header2.default, null),
 	        _react3.default.createElement(_drawing2.default, { url: this.state.url }),
 	        _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePicture.bind(this) }),
-	        _react3.default.createElement(_download2.default, null)
+	        _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded })
 	      );
 	    }
 	  }]);
@@ -25813,7 +25816,7 @@
 	          'button',
 	          { className: 'btn btn-hg btn-embossed btn-primary upload' },
 	          _react3.default.createElement('i', { className: 'fa fa-picture-o', 'aria-hidden': 'true' }),
-	          ' Upload your own photo',
+	          ' Upload photo',
 	          _react3.default.createElement('input', { ref: 'photo', type: 'file', name: 'picture', accept: 'image/*', onChange: this.fileChange })
 	        )
 	      );
@@ -25893,12 +25896,16 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: "text-center", style: { "marginTop": "5px" } },
+	        { className: this.props.shouldShow ? "text-center" : "hidden", style: { "marginTop": "5px" } },
 	        _react3.default.createElement(
 	          "button",
-	          { className: "btn btn-hg btn-danger upload", onClick: this.onClick.bind(this) },
-	          _react3.default.createElement("i", { className: "fa fa-download", "aria-hidden": "true" }),
-	          " Download"
+	          { className: "btn btn-hg btn-success btn-embossed upload", onClick: this.onClick.bind(this) },
+	          _react3.default.createElement(
+	            "b",
+	            null,
+	            _react3.default.createElement("i", { className: "fa fa-download", "aria-hidden": "true" }),
+	            " Download"
+	          )
 	        )
 	      );
 	    }

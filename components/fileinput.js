@@ -29,7 +29,7 @@ export default class FileInput extends React.Component {
           <b>Current picture:</b> <span>{this.state.imageName}</span>
         </div>
         <button className="btn btn-hg btn-embossed btn-primary upload">
-          <i className="fa fa-picture-o" aria-hidden="true"></i> Upload your own photo
+          <i className="fa fa-picture-o" aria-hidden="true"></i> Upload photo
           <input ref="photo" type="file" name="picture" accept="image/*" onChange={this.fileChange} />
         </button>
       </div>
