@@ -4,6 +4,7 @@ import Drawing from './drawing';
 import FileInput from './fileinput';
 import TextInput from './textinput';
 import Download from './download';
+import Footer from './footer'
 
 export default class App extends React.Component {
   constructor() {
@@ -20,15 +21,16 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <div className="col-xs-12">
-          <Header/>
-          <Drawing url={this.state.url} />
-          <form className="form-horizontal">
-            <FileInput updatePicture={this.updatePicture.bind(this)} />
-            <TextInput shouldShow={this.state.imageUploaded}/>
-            <Download shouldShow={this.state.imageUploaded}/>
-          </form>
-        </div>
+      <div className="col-xs-12">
+        <Header/>
+        <Drawing url={this.state.url} />
+        <form className="form-horizontal">
+          <FileInput updatePicture={this.updatePicture.bind(this)} />
+          <TextInput shouldShow={this.state.imageUploaded}/>
+          <Download shouldShow={this.state.imageUploaded}/>
+        </form>
+        <Footer />
+      </div>
     );
   }
 }

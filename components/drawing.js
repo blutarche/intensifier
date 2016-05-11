@@ -26,6 +26,11 @@ export default class Drawing extends React.Component {
 
   componentDidUpdate() {
     this.drawingPicture();
+    console.log("URL DidUpdate: "+this.nextProps);
+  }
+
+  componentWillUpdate() {
+    console.log("URL WillUpdate: "+this.props.url);
   }
 
   updatePosition() {
