@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import Drawing from './drawing';
 import FileInput from './fileinput';
+import TextInput from './textinput';
 import Download from './download';
 
 export default class App extends React.Component {
@@ -20,10 +21,13 @@ export default class App extends React.Component {
   render() {
     return (
         <div className="col-xs-12">
-          <Header />
+          <Header/>
           <Drawing url={this.state.url} />
-          <FileInput updatePicture={this.updatePicture.bind(this)} />
-          <Download shouldShow={this.state.imageUploaded}/>
+          <form className="form-horizontal">
+            <FileInput updatePicture={this.updatePicture.bind(this)} />
+            <TextInput shouldShow={this.state.imageUploaded}/>
+            <Download shouldShow={this.state.imageUploaded}/>
+          </form>
         </div>
     );
   }

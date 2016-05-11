@@ -4,9 +4,6 @@ import React from 'react';
 export default class FileInput extends React.Component {
   constructor() {
     super();
-    this.state = {
-      nameStyle: {display: "none"}
-    };
     this.fileChange = this.fileChange.bind(this);
   }
 
@@ -22,11 +19,16 @@ export default class FileInput extends React.Component {
 
   render() {
     return (
-      <div className="text-center">
-        <button className="btn btn-hg btn-embossed btn-primary upload">
-          <i className="fa fa-picture-o" aria-hidden="true"></i> Upload photo
-          <input ref="photo" type="file" name="picture" accept="image/*" onChange={this.fileChange} />
-        </button>
+      <div className="form-group">
+        <label className="col-sm-4 control-label"> 
+          <b>Photo</b>
+        </label>
+        <div className="col-sm-5">
+          <button className="btn btn-embossed btn-primary upload">
+            <i className="fa fa-picture-o" aria-hidden="true"></i> Upload photo
+            <input ref="photo" type="file" name="picture" accept="image/*" onChange={this.fileChange} />
+          </button>
+        </div>
       </div>
     );
   }

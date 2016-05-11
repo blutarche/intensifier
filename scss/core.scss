@@ -4,6 +4,11 @@
 
 html, body {
     background-color: $bg-color;
+    font-size: 10px;
+}
+
+.btn {
+    font-size: 2em;
 }
 
 .btn.upload {
@@ -29,4 +34,14 @@ canvas {
     width: 100%;
     height: auto;
     overflow: hidden;
+}
+
+.control-label {
+    font-size: 2em;
+    line-height: 2.3;
+    text-align: right;
+}
+
+.form-group {
+    margin-top: 15px;
 }

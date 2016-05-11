@@ -11,10 +11,12 @@ export default class Download extends React.Component {
 
   render() {
     return (
-      <div className={this.props.shouldShow ? "text-center" : "hidden"} style={{"marginTop": "5px"}} >
-        <button className="btn btn-hg btn-success btn-embossed upload" onClick={this.onClick.bind(this)} >
-            <b><i className="fa fa-download" aria-hidden="true"></i> Download</b>
-        </button>
+      <div className={this.props.shouldShow ? "form-group" : "hidden"}>
+        <div className="col-sm-5 col-sm-offset-4">
+          <button className="btn btn-hg btn-success btn-embossed upload" onClick={this.onClick.bind(this)} style={{"width" : "100%"}}>
+              <b><i className="fa fa-download" aria-hidden="true"></i> Download</b>
+          </button>
+        </div>
       </div>
     );
   }
