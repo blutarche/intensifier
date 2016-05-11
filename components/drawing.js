@@ -10,8 +10,9 @@ var renderImage = new Image();
 var downloadImage = new Image();
 var updateInterval;
 var canvas;
+var context;
 var canvasSize = {width: 0, height: 0};
-var ctx;
+
 
 export default class Drawing extends React.Component {
   constructor() {
@@ -36,13 +37,15 @@ export default class Drawing extends React.Component {
     renderImage.onload = function() {
       self.updateCanvas();
     }
-    console.log(renderImage.src);
-    console.log("UpdatePicture --> Image : w = " + renderImage.width + " h = " + renderImage.height);
+  }
+
+  initCanvas() {
+    canvas = this.refs.canvas;
+    context = canvas.getContext('2d');
   }
 
   componentDidMount() {
-    canvas = this.refs.canvas;
-    ctx = canvas.getContext('2d');
+    this.initCanvas();
     this.updatePicture();
     updateInterval = setInterval(this.updatePosition.bind(this), 50);
   } 
@@ -52,7 +55,6 @@ export default class Drawing extends React.Component {
   }
 
   updateCanvas() {
-    console.log("Image : w = " + renderImage.width + " h = " + renderImage.height);
     canvas.width = renderImage.width - lostScale.width;
     canvas.height = renderImage.height - lostScale.height;
     canvasSize = {width: canvas.width, height: canvas.height};
@@ -62,8 +64,8 @@ export default class Drawing extends React.Component {
     var shift = shiftPosition[rotationRound];
     var x = -middle.x + shift.x;
     var y = -middle.y + shift.y;
-    ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
-    ctx.drawImage(renderImage, x, y);
+    context.clearRect(0, 0, canvasSize.width, canvasSize.height);
+    context.drawImage(renderImage, x, y);
     rotationRound = (rotationRound + 1) % maxFrame;
   }
 
