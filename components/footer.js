@@ -9,9 +9,11 @@ export default class Footer extends React.Component {
     return (
       <div className="text-center footer">
         <p className="splitter">___________</p>
-        <p><b>Contributors</b></p>
-        <p>Aikdanai Sidhikosol</p>
-        <p>Supanut Apikulvanich</p>
+        <p>
+          <b>Contributors</b><br/>
+          Aikdanai Sidhikosol<br/>
+          Supanut Apikulvanich
+        </p>
       </div>
     );
   }

@@ -12,9 +12,6 @@ export default class FileInput extends React.Component {
     var file = e.target.files[0];
     this.props.updatePicture(URL.createObjectURL(file));
     window.file = file;
-    this.setState({
-      nameStyle: {display: "block"}
-    });
   }
 
   render() {

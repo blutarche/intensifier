@@ -47,7 +47,7 @@ export default class Drawing extends React.Component {
   componentDidMount() {
     this.initCanvas();
     this.updatePicture();
-    updateInterval = setInterval(this.updatePosition.bind(this), 50);
+    updateInterval = setInterval(this.updatePosition.bind(this), 30);
   } 
 
   componentDidUpdate() {
