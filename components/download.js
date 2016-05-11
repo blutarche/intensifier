@@ -6,7 +6,8 @@ export default class Download extends React.Component {
   }
 
   onClick(e) {
-    alert("Download Clicked");
+    e.preventDefault();
+    this.props.downloadGIF();
   }
 
   render() {

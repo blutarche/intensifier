@@ -33,9 +33,11 @@ export default class Drawing extends React.Component {
 
   updatePicture() {
     renderImage.src = this.props.url;
-    var self = this;
+    let self = this;
     renderImage.onload = function() {
       self.updateCanvas();
+      let uri = self.generateGIF();
+      self.props.gifComplete(uri);
     }
   }
 
@@ -77,10 +79,13 @@ export default class Drawing extends React.Component {
     }
 
     encoder.finish();
+
     // document.getElementById('imageTagID').src = 'data:image/gif;base64,'+encode64(encoder.stream().getData());
+    return 'data:image/gif;base64,'+encode64(encoder.stream().getData());
+    
   }
 
-  updatePosition(context) {
+  updatePosition(context, isGenGIF) {
     var shift = shiftPosition[rotationRound];
     var x = -middle.x + shift.x;
     var y = -middle.y + shift.y;
@@ -90,7 +95,7 @@ export default class Drawing extends React.Component {
   }
 
   render() {
-    window.generateGIF = this.generateGIF.bind(this);
+    // window.generateGIF = this.generateGIF.bind(this);
     return (
       <div className="row">
         <div className="text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
