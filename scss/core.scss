@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+@import "variables";
+
+html, body {
+    background-color: $bg-color;
+    font-size: 10px;
+}
+
+.btn {
+    font-size: 2em;
+}
+
+.btn.upload {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn.upload input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom : 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+canvas {
+    background-color: $canvas-bg-color; 
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.control-label {
+    font-size: 2em;
+    line-height: 2em;
+    text-align: right;
+}
+
+.form-group {
+    margin-top: 15px;
+}
+
+.splitter {
+    color: $gray-color;
+}
+
+.footer {
+    font-size: 8px;
+}

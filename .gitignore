@@ -1,3 +1,6 @@
 .sass-cache
-css
-fonts
+design
+node_modules
+npm-debug.log
+webpack-watch
+build
