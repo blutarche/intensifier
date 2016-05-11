@@ -10,7 +10,9 @@ export default class FileInput extends React.Component {
   fileChange(e) {
     var reader = new FileReader();
     var file = e.target.files[0];
-    this.props.updatePicture(URL.createObjectURL(file));
+    var url = URL.createObjectURL(file);
+    console.log("fileChange URL: "+url);
+    this.props.updatePicture(url);
     window.file = file;
   }
 

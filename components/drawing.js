@@ -1,4 +1,7 @@
 import React from 'react';
+import FileInput from './fileinput';
+import TextInput from './textinput';
+import Download from './download';
 
 var ratio = 1;
 var shiftPosition = [];
@@ -12,12 +15,39 @@ var updateInterval;
 var canvas;
 var context;
 var canvasSize = {width: 0, height: 0};
-
+var downloadURL = ""
 
 export default class Drawing extends React.Component {
   constructor() {
     super();
     this.initValue();
+    this.text = '';
+    this.state = {
+      url: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg',
+      imageUploaded: false,
+      downloadURL: ''
+    };
+    downloadURL = this.state.downloadURL;
+  }
+
+  downloadURI(uri, name) {
+    let link = document.createElement("a");
+    link.download = name;
+    link.href = uri.uri;
+    link.click();
+  }
+
+  downloadGIF() {
+    this.downloadURI(downloadURL, "intensifier.gif");
+  }
+
+  gifComplete(url) {
+    downloadURL = url;
+  }
+
+  textInputChange(value) {
+    this.text = value;
+    console.log(this.text);
   }
 
   initValue() {
@@ -31,14 +61,23 @@ export default class Drawing extends React.Component {
     maxFrame = shiftPosition.length;
   }
 
+  updatePictureURL(url) {
+    this.setState({url: url, imageUploaded: true, downloadURL: ''});
+    console.log("URL: "+url);
+  }
+
   updatePicture() {
-    renderImage.src = this.props.url;
+    renderImage.src = this.state.url;
     let self = this;
     renderImage.onload = function() {
       self.updateCanvas();
-      let uri = self.generateGIF();
-      self.props.gifComplete(uri);
+      let uri = {uri: self.generateGIF()};
+      self.gifComplete(uri);
     }
+  }
+
+  componentDidUpdate() {
+    this.updatePicture();
   }
 
   initCanvas() {
@@ -52,15 +91,10 @@ export default class Drawing extends React.Component {
     updateInterval = setInterval(this.updatePosition.bind(this, context), 30);
   } 
 
-  componentDidUpdate() {
-    this.updatePicture();
-  }
-
   updateCanvas() {
     canvas.width = renderImage.width - lostScale.width;
     canvas.height = renderImage.height - lostScale.height;
     canvasSize = {width: canvas.width, height: canvas.height};
-
   }
 
   generateGIF() {
@@ -79,10 +113,8 @@ export default class Drawing extends React.Component {
     }
 
     encoder.finish();
-
     // document.getElementById('imageTagID').src = 'data:image/gif;base64,'+encode64(encoder.stream().getData());
     return 'data:image/gif;base64,'+encode64(encoder.stream().getData());
-    
   }
 
   updatePosition(context, isGenGIF) {
@@ -100,6 +132,13 @@ export default class Drawing extends React.Component {
       <div className="row">
         <div className="text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <canvas ref="canvas" />
+        </div>
+        <div className="col-xs-12">
+          <form className="form-horizontal">
+            <FileInput updatePicture={this.updatePictureURL.bind(this)} />
+            <TextInput textChange={this.textInputChange.bind(this)} shouldShow={this.state.imageUploaded}/>
+            <Download shouldShow={this.state.imageUploaded} downloadGIF={this.downloadGIF.bind(this)} />
+          </form>
         </div>
       </div>
     )

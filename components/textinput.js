@@ -11,15 +11,17 @@ export default class TextInput extends React.Component {
   }
 
   render() {
-    return (
-      <div className={this.props.shouldShow ? "form-group" : "hidden"}>
-        <label className="col-sm-4 control-label"> 
-          <b>Message</b>
-        </label>
-        <div className="text-center col-sm-5">
-          <input type="text" placeholder="[doge intensifies]" className="form-control input-hg" style={{"width": "100%"}} onChange={this.textChange}/>
-        </div>
-      </div>
-    );
+    return (null);
+
+    // (
+    //   <div className={this.props.shouldShow ? "form-group" : "hidden"}>
+    //     <label className="col-sm-4 control-label"> 
+    //       <b>Message</b>
+    //     </label>
+    //     <div className="text-center col-sm-5">
+    //       <input type="text" placeholder="[doge intensifies]" className="form-control input-hg" style={{"width": "100%"}} onChange={this.textChange}/>
+    //     </div>
+    //   </div>
+    // );
   }
 };
