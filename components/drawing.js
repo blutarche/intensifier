@@ -33,9 +33,11 @@ export default class Drawing extends React.Component {
 
   updatePicture() {
     renderImage.src = this.props.url;
-    var self = this;
+    let self = this;
     renderImage.onload = function() {
       self.updateCanvas();
+      let uri = self.generateGIF();
+      self.props.gifComplete(uri);
     }
   }
 
@@ -47,7 +49,7 @@ export default class Drawing extends React.Component {
   componentDidMount() {
     this.initCanvas();
     this.updatePicture();
-    updateInterval = setInterval(this.updatePosition.bind(this), 30);
+    updateInterval = setInterval(this.updatePosition.bind(this, context), 30);
   } 
 
   componentDidUpdate() {
@@ -61,7 +63,29 @@ export default class Drawing extends React.Component {
 
   }
 
-  updatePosition() {
+  generateGIF() {
+    let downloadCanvas = document.createElement('canvas');
+    downloadCanvas.width = canvas.width;
+    downloadCanvas.height = canvas.height;
+    let downloadContext = downloadCanvas.getContext('2d');
+    let encoder = new GIFEncoder();
+    encoder.setRepeat(0);
+    encoder.setDelay(30);
+    encoder.start();
+
+    for (var i = 0; i < maxFrame; i++) {
+      this.updatePosition(downloadContext);
+      encoder.addFrame(downloadContext);
+    }
+
+    encoder.finish();
+
+    // document.getElementById('imageTagID').src = 'data:image/gif;base64,'+encode64(encoder.stream().getData());
+    return 'data:image/gif;base64,'+encode64(encoder.stream().getData());
+    
+  }
+
+  updatePosition(context, isGenGIF) {
     var shift = shiftPosition[rotationRound];
     var x = -middle.x + shift.x;
     var y = -middle.y + shift.y;
@@ -71,6 +95,7 @@ export default class Drawing extends React.Component {
   }
 
   render() {
+    // window.generateGIF = this.generateGIF.bind(this);
     return (
       <div className="row">
         <div className="text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
