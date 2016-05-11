@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a5df9c8060ca5d9563e1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1a02740f41b89159b435"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -629,18 +629,6 @@
 
 	var _drawing2 = _interopRequireDefault(_drawing);
 
-	var _fileinput = __webpack_require__(294);
-
-	var _fileinput2 = _interopRequireDefault(_fileinput);
-
-	var _textinput = __webpack_require__(295);
-
-	var _textinput2 = _interopRequireDefault(_textinput);
-
-	var _download = __webpack_require__(296);
-
-	var _download2 = _interopRequireDefault(_download);
-
 	var _footer = __webpack_require__(297);
 
 	var _footer2 = _interopRequireDefault(_footer);
@@ -678,35 +666,17 @@
 	  function App() {
 	    _classCallCheck(this, App);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
-
-	    _this.state = {
-	      url: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg',
-	      imageUploaded: false
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
 	  }
 
 	  _createClass(App, [{
-	    key: 'updatePicture',
-	    value: function updatePicture(url) {
-	      this.setState({ url: url, imageUploaded: true });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react3.default.createElement(
 	        'div',
 	        { className: 'col-xs-12' },
 	        _react3.default.createElement(_header2.default, null),
-	        _react3.default.createElement(_drawing2.default, { url: this.state.url }),
-	        _react3.default.createElement(
-	          'form',
-	          { className: 'form-horizontal' },
-	          _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePicture.bind(this) }),
-	          _react3.default.createElement(_textinput2.default, { shouldShow: this.state.imageUploaded }),
-	          _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded })
-	        ),
+	        _react3.default.createElement(_drawing2.default, null),
 	        _react3.default.createElement(_footer2.default, null)
 	      );
 	    }
@@ -25625,6 +25595,18 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _fileinput = __webpack_require__(294);
+
+	var _fileinput2 = _interopRequireDefault(_fileinput);
+
+	var _textinput = __webpack_require__(295);
+
+	var _textinput2 = _interopRequireDefault(_textinput);
+
+	var _download = __webpack_require__(296);
+
+	var _download2 = _interopRequireDefault(_download);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25664,6 +25646,7 @@
 	var canvas;
 	var context;
 	var canvasSize = { width: 0, height: 0 };
+	var downloadURL = "";
 
 	var Drawing = _wrapComponent('Drawing')(function (_React$Component) {
 	  _inherits(Drawing, _React$Component);
@@ -25674,10 +25657,41 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Drawing).call(this));
 
 	    _this.initValue();
+	    _this.text = '';
+	    _this.state = {
+	      url: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg',
+	      imageUploaded: false,
+	      downloadURL: ''
+	    };
+	    downloadURL = _this.state.downloadURL;
 	    return _this;
 	  }
 
 	  _createClass(Drawing, [{
+	    key: 'downloadURI',
+	    value: function downloadURI(uri, name) {
+	      var link = document.createElement("a");
+	      link.download = name;
+	      link.href = uri.uri;
+	      link.click();
+	    }
+	  }, {
+	    key: 'downloadGIF',
+	    value: function downloadGIF() {
+	      this.downloadURI(downloadURL, "intensifier.gif");
+	    }
+	  }, {
+	    key: 'gifComplete',
+	    value: function gifComplete(url) {
+	      downloadURL = url;
+	    }
+	  }, {
+	    key: 'textInputChange',
+	    value: function textInputChange(value) {
+	      this.text = value;
+	      console.log(this.text);
+	    }
+	  }, {
 	    key: 'initValue',
 	    value: function initValue() {
 	      shiftPosition.push({ x: -Math.sqrt(3), y: 1 });
@@ -25690,13 +25704,26 @@
 	      maxFrame = shiftPosition.length;
 	    }
 	  }, {
+	    key: 'updatePictureURL',
+	    value: function updatePictureURL(url) {
+	      this.setState({ url: url, imageUploaded: true, downloadURL: '' });
+	      console.log("URL: " + url);
+	    }
+	  }, {
 	    key: 'updatePicture',
 	    value: function updatePicture() {
-	      renderImage.src = this.props.url;
+	      renderImage.src = this.state.url;
 	      var self = this;
 	      renderImage.onload = function () {
 	        self.updateCanvas();
+	        var uri = { uri: self.generateGIF() };
+	        self.gifComplete(uri);
 	      };
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      this.updatePicture();
 	    }
 	  }, {
 	    key: 'initCanvas',
@@ -25709,12 +25736,7 @@
 	    value: function componentDidMount() {
 	      this.initCanvas();
 	      this.updatePicture();
-	      updateInterval = setInterval(this.updatePosition.bind(this), 50);
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      this.updatePicture();
+	      updateInterval = setInterval(this.updatePosition.bind(this, context), 30);
 	    }
 	  }, {
 	    key: 'updateCanvas',
@@ -25724,8 +25746,29 @@
 	      canvasSize = { width: canvas.width, height: canvas.height };
 	    }
 	  }, {
+	    key: 'generateGIF',
+	    value: function generateGIF() {
+	      var downloadCanvas = document.createElement('canvas');
+	      downloadCanvas.width = canvas.width;
+	      downloadCanvas.height = canvas.height;
+	      var downloadContext = downloadCanvas.getContext('2d');
+	      var encoder = new GIFEncoder();
+	      encoder.setRepeat(0);
+	      encoder.setDelay(30);
+	      encoder.start();
+
+	      for (var i = 0; i < maxFrame; i++) {
+	        this.updatePosition(downloadContext);
+	        encoder.addFrame(downloadContext);
+	      }
+
+	      encoder.finish();
+	      // document.getElementById('imageTagID').src = 'data:image/gif;base64,'+encode64(encoder.stream().getData());
+	      return 'data:image/gif;base64,' + encode64(encoder.stream().getData());
+	    }
+	  }, {
 	    key: 'updatePosition',
-	    value: function updatePosition() {
+	    value: function updatePosition(context, isGenGIF) {
 	      var shift = shiftPosition[rotationRound];
 	      var x = -middle.x + shift.x;
 	      var y = -middle.y + shift.y;
@@ -25736,6 +25779,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      // window.generateGIF = this.generateGIF.bind(this);
 	      return _react3.default.createElement(
 	        'div',
 	        { className: 'row' },
@@ -25743,6 +25787,17 @@
 	          'div',
 	          { className: 'text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3' },
 	          _react3.default.createElement('canvas', { ref: 'canvas' })
+	        ),
+	        _react3.default.createElement(
+	          'div',
+	          { className: 'col-xs-12' },
+	          _react3.default.createElement(
+	            'form',
+	            { className: 'form-horizontal' },
+	            _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePictureURL.bind(this) }),
+	            _react3.default.createElement(_textinput2.default, { textChange: this.textInputChange.bind(this), shouldShow: this.state.imageUploaded }),
+	            _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded, downloadGIF: this.downloadGIF.bind(this) })
+	          )
 	        )
 	      );
 	    }
@@ -25819,11 +25874,10 @@
 	    value: function fileChange(e) {
 	      var reader = new FileReader();
 	      var file = e.target.files[0];
-	      this.props.updatePicture(URL.createObjectURL(file));
+	      var url = URL.createObjectURL(file);
+	      console.log("fileChange URL: " + url);
+	      this.props.updatePicture(url);
 	      window.file = file;
-	      this.setState({
-	        nameStyle: { display: "block" }
-	      });
 	    }
 	  }, {
 	    key: "render",
@@ -25866,7 +25920,7 @@
 /* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -25892,12 +25946,12 @@
 
 	var _components = {
 	  TextInput: {
-	    displayName: "TextInput"
+	    displayName: 'TextInput'
 	  }
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/textinput.js",
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/textinput.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25909,36 +25963,38 @@
 	  };
 	}
 
-	var TextInput = _wrapComponent("TextInput")(function (_React$Component) {
+	var TextInput = _wrapComponent('TextInput')(function (_React$Component) {
 	  _inherits(TextInput, _React$Component);
 
 	  function TextInput() {
 	    _classCallCheck(this, TextInput);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TextInput).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TextInput).call(this));
+
+	    _this.textChange = _this.textChange.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(TextInput, [{
-	    key: "render",
+	    key: 'textChange',
+	    value: function textChange(e) {
+	      this.props.textChange(e.target.value);
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
-	      return _react3.default.createElement(
-	        "div",
-	        { className: this.props.shouldShow ? "form-group" : "hidden" },
-	        _react3.default.createElement(
-	          "label",
-	          { className: "col-sm-4 control-label" },
-	          _react3.default.createElement(
-	            "b",
-	            null,
-	            "Message"
-	          )
-	        ),
-	        _react3.default.createElement(
-	          "div",
-	          { className: "text-center col-sm-5" },
-	          _react3.default.createElement("input", { type: "text", placeholder: "[doge intensifies]", className: "form-control input-hg", style: { "width": "100%" } })
-	        )
-	      );
+	      return null;
+
+	      // (
+	      //   <div className={this.props.shouldShow ? "form-group" : "hidden"}>
+	      //     <label className="col-sm-4 control-label">
+	      //       <b>Message</b>
+	      //     </label>
+	      //     <div className="text-center col-sm-5">
+	      //       <input type="text" placeholder="[doge intensifies]" className="form-control input-hg" style={{"width": "100%"}} onChange={this.textChange}/>
+	      //     </div>
+	      //   </div>
+	      // );
 	    }
 	  }]);
 
@@ -26008,7 +26064,8 @@
 	  _createClass(Download, [{
 	    key: "onClick",
 	    value: function onClick(e) {
-	      alert("Download Clicked");
+	      e.preventDefault();
+	      this.props.downloadGIF();
 	    }
 	  }, {
 	    key: "render",
@@ -26115,16 +26172,10 @@
 	            "b",
 	            null,
 	            "Contributors"
-	          )
-	        ),
-	        _react3.default.createElement(
-	          "p",
-	          null,
-	          "Aikdanai Sidhikosol"
-	        ),
-	        _react3.default.createElement(
-	          "p",
-	          null,
+	          ),
+	          _react3.default.createElement("br", null),
+	          "Aikdanai Sidhikosol",
+	          _react3.default.createElement("br", null),
 	          "Supanut Apikulvanich"
 	        )
 	      );
