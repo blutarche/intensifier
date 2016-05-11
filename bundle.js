@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "629059f80d4dd9a167e9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "82d425897e456362491f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -593,7 +593,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(296);
+	var _reactDom = __webpack_require__(297);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -633,7 +633,11 @@
 
 	var _fileinput2 = _interopRequireDefault(_fileinput);
 
-	var _download = __webpack_require__(295);
+	var _textinput = __webpack_require__(295);
+
+	var _textinput2 = _interopRequireDefault(_textinput);
+
+	var _download = __webpack_require__(296);
 
 	var _download2 = _interopRequireDefault(_download);
 
@@ -692,8 +696,13 @@
 	        { className: 'col-xs-12' },
 	        _react3.default.createElement(_header2.default, null),
 	        _react3.default.createElement(_drawing2.default, { url: this.state.url }),
-	        _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePicture.bind(this) }),
-	        _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded })
+	        _react3.default.createElement(
+	          'form',
+	          { className: 'form-horizontal' },
+	          _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePicture.bind(this) }),
+	          _react3.default.createElement(_textinput2.default, { shouldShow: this.state.imageUploaded }),
+	          _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded })
+	        )
 	      );
 	    }
 	  }]);
@@ -25638,13 +25647,13 @@
 	  };
 	}
 
-	var randomMax = 1.5;
+	var randomMax = 2;
 	var shiftPosition = 0;
 	var middleRange = 0;
-	var img = new Image();
-	var ouputImage = new Image();
 	var rotationRound = 0;
 	var maxFrame = 3;
+	var drawingImage = new Image();
+	var ouputImage = new Image();
 
 	var Drawing = _wrapComponent('Drawing')(function (_React$Component) {
 	  _inherits(Drawing, _React$Component);
@@ -25663,12 +25672,12 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.drawingPicture();
-	      setInterval(this.updatePosition.bind(this), 20);
+	      setInterval(this.updatePosition.bind(this), 50);
 	    }
 	  }, {
 	    key: 'drawingPicture',
 	    value: function drawingPicture() {
-	      img.src = this.props.url;
+	      drawingImage.src = this.props.url;
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
@@ -25679,8 +25688,8 @@
 	    key: 'updatePosition',
 	    value: function updatePosition() {
 	      var canvas = this.refs.canvas;
-	      canvas.width = img.width - randomMax;
-	      canvas.height = img.height - randomMax;
+	      canvas.width = drawingImage.width - randomMax;
+	      canvas.height = drawingImage.height - randomMax;
 	      var ctx = canvas.getContext('2d');
 	      var width = canvas.width;
 	      var height = canvas.height;
@@ -25692,7 +25701,7 @@
 	      var w = width - middleRange;
 	      var h = height - middleRange;
 	      ctx.clearRect(0, 0, width, height);
-	      ctx.drawImage(img, x, y);
+	      ctx.drawImage(drawingImage, x, y);
 	      rotationRound = (rotationRound + 1) % maxFrame;
 	    }
 	  }, {
@@ -25772,9 +25781,6 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).call(this));
 
-	    _this.state = {
-	      nameStyle: { display: "none" }
-	    };
 	    _this.fileChange = _this.fileChange.bind(_this);
 	    return _this;
 	  }
@@ -25795,13 +25801,26 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: "text-center" },
+	        { className: "form-group" },
 	        _react3.default.createElement(
-	          "button",
-	          { className: "btn btn-hg btn-embossed btn-primary upload" },
-	          _react3.default.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
-	          " Upload photo",
-	          _react3.default.createElement("input", { ref: "photo", type: "file", name: "picture", accept: "image/*", onChange: this.fileChange })
+	          "label",
+	          { className: "col-sm-4 control-label" },
+	          _react3.default.createElement(
+	            "b",
+	            null,
+	            "Photo"
+	          )
+	        ),
+	        _react3.default.createElement(
+	          "div",
+	          { className: "col-sm-5" },
+	          _react3.default.createElement(
+	            "button",
+	            { className: "btn btn-embossed btn-primary upload" },
+	            _react3.default.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
+	            " Upload photo",
+	            _react3.default.createElement("input", { ref: "photo", type: "file", name: "picture", accept: "image/*", onChange: this.fileChange })
+	          )
 	        )
 	      );
 	    }
@@ -25816,6 +25835,93 @@
 
 /***/ },
 /* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react2 = __webpack_require__(3);
+
+	var _react3 = _interopRequireDefault(_react2);
+
+	var _reactTransformHmr3 = __webpack_require__(160);
+
+	var _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _components = {
+	  TextInput: {
+	    displayName: "TextInput"
+	  }
+	};
+
+	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/textinput.js",
+	  components: _components,
+	  locals: [module],
+	  imports: [_react3.default]
+	});
+
+	function _wrapComponent(id) {
+	  return function (Component) {
+	    return _reactTransformHmr2(Component, id);
+	  };
+	}
+
+	var TextInput = _wrapComponent("TextInput")(function (_React$Component) {
+	  _inherits(TextInput, _React$Component);
+
+	  function TextInput() {
+	    _classCallCheck(this, TextInput);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TextInput).call(this));
+	  }
+
+	  _createClass(TextInput, [{
+	    key: "render",
+	    value: function render() {
+	      return _react3.default.createElement(
+	        "div",
+	        { className: this.props.shouldShow ? "form-group" : "hidden" },
+	        _react3.default.createElement(
+	          "label",
+	          { className: "col-sm-4 control-label" },
+	          _react3.default.createElement(
+	            "b",
+	            null,
+	            "Message"
+	          )
+	        ),
+	        _react3.default.createElement(
+	          "div",
+	          { className: "text-center col-sm-5" },
+	          _react3.default.createElement("input", { type: "text", placeholder: "[doge intensifies]", className: "form-control input-hg", style: { "width": "100%" } })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TextInput;
+	}(_react3.default.Component));
+
+	exports.default = TextInput;
+	;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -25880,15 +25986,19 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: this.props.shouldShow ? "text-center" : "hidden", style: { "marginTop": "5px" } },
+	        { className: this.props.shouldShow ? "form-group" : "hidden" },
 	        _react3.default.createElement(
-	          "button",
-	          { className: "btn btn-hg btn-success btn-embossed upload", onClick: this.onClick.bind(this) },
+	          "div",
+	          { className: "col-sm-5 col-sm-offset-4" },
 	          _react3.default.createElement(
-	            "b",
-	            null,
-	            _react3.default.createElement("i", { className: "fa fa-download", "aria-hidden": "true" }),
-	            " Download"
+	            "button",
+	            { className: "btn btn-hg btn-success btn-embossed upload", onClick: this.onClick.bind(this), style: { "width": "100%" } },
+	            _react3.default.createElement(
+	              "b",
+	              null,
+	              _react3.default.createElement("i", { className: "fa fa-download", "aria-hidden": "true" }),
+	              " Download"
+	            )
 	          )
 	        )
 	      );
@@ -25903,7 +26013,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
