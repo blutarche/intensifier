@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "82d425897e456362491f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a5df9c8060ca5d9563e1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -593,7 +593,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(297);
+	var _reactDom = __webpack_require__(298);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -640,6 +640,10 @@
 	var _download = __webpack_require__(296);
 
 	var _download2 = _interopRequireDefault(_download);
+
+	var _footer = __webpack_require__(297);
+
+	var _footer2 = _interopRequireDefault(_footer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -702,7 +706,8 @@
 	          _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePicture.bind(this) }),
 	          _react3.default.createElement(_textinput2.default, { shouldShow: this.state.imageUploaded }),
 	          _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded })
-	        )
+	        ),
+	        _react3.default.createElement(_footer2.default, null)
 	      );
 	    }
 	  }]);
@@ -25647,13 +25652,18 @@
 	  };
 	}
 
-	var randomMax = 2;
-	var shiftPosition = 0;
-	var middleRange = 0;
+	var ratio = 1;
+	var shiftPosition = [];
+	var middle = { x: 0, y: 0 };
+	var lostScale = { width: 0, height: 0 };
 	var rotationRound = 0;
-	var maxFrame = 3;
-	var drawingImage = new Image();
-	var ouputImage = new Image();
+	var maxFrame = 0;
+	var renderImage = new Image();
+	var downloadImage = new Image();
+	var updateInterval;
+	var canvas;
+	var context;
+	var canvasSize = { width: 0, height: 0 };
 
 	var Drawing = _wrapComponent('Drawing')(function (_React$Component) {
 	  _inherits(Drawing, _React$Component);
@@ -25663,45 +25673,64 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Drawing).call(this));
 
-	    shiftPosition = randomMax;
-	    middleRange = randomMax / 2;
+	    _this.initValue();
 	    return _this;
 	  }
 
 	  _createClass(Drawing, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.drawingPicture();
-	      setInterval(this.updatePosition.bind(this), 50);
+	    key: 'initValue',
+	    value: function initValue() {
+	      shiftPosition.push({ x: -Math.sqrt(3), y: 1 });
+	      shiftPosition.push({ x: Math.sqrt(3), y: 1 });
+	      shiftPosition.push({ x: 0, y: -2 });
+	      middle.x = Math.sqrt(3);
+	      middle.y = 1;
+	      lostScale.width = 2 * Math.sqrt(3);
+	      lostScale.height = 3;
+	      maxFrame = shiftPosition.length;
 	    }
 	  }, {
-	    key: 'drawingPicture',
-	    value: function drawingPicture() {
-	      drawingImage.src = this.props.url;
+	    key: 'updatePicture',
+	    value: function updatePicture() {
+	      renderImage.src = this.props.url;
+	      var self = this;
+	      renderImage.onload = function () {
+	        self.updateCanvas();
+	      };
+	    }
+	  }, {
+	    key: 'initCanvas',
+	    value: function initCanvas() {
+	      canvas = this.refs.canvas;
+	      context = canvas.getContext('2d');
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.initCanvas();
+	      this.updatePicture();
+	      updateInterval = setInterval(this.updatePosition.bind(this), 50);
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      this.drawingPicture();
+	      this.updatePicture();
+	    }
+	  }, {
+	    key: 'updateCanvas',
+	    value: function updateCanvas() {
+	      canvas.width = renderImage.width - lostScale.width;
+	      canvas.height = renderImage.height - lostScale.height;
+	      canvasSize = { width: canvas.width, height: canvas.height };
 	    }
 	  }, {
 	    key: 'updatePosition',
 	    value: function updatePosition() {
-	      var canvas = this.refs.canvas;
-	      canvas.width = drawingImage.width - randomMax;
-	      canvas.height = drawingImage.height - randomMax;
-	      var ctx = canvas.getContext('2d');
-	      var width = canvas.width;
-	      var height = canvas.height;
-	      shiftPosition *= -1;
-	      var shiftPositionX = randomMax * Math.cos(Math.PI * 2 * rotationRound / maxFrame);
-	      var shiftPositionY = randomMax * Math.sin(Math.PI * 2 * rotationRound / maxFrame);
-	      var x = -middleRange + shiftPositionX;
-	      var y = -middleRange + shiftPositionY;
-	      var w = width - middleRange;
-	      var h = height - middleRange;
-	      ctx.clearRect(0, 0, width, height);
-	      ctx.drawImage(drawingImage, x, y);
+	      var shift = shiftPosition[rotationRound];
+	      var x = -middle.x + shift.x;
+	      var y = -middle.y + shift.y;
+	      context.clearRect(0, 0, canvasSize.width, canvasSize.height);
+	      context.drawImage(renderImage, x, y);
 	      rotationRound = (rotationRound + 1) % maxFrame;
 	    }
 	  }, {
@@ -26014,6 +26043,103 @@
 
 /***/ },
 /* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react2 = __webpack_require__(3);
+
+	var _react3 = _interopRequireDefault(_react2);
+
+	var _reactTransformHmr3 = __webpack_require__(160);
+
+	var _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _components = {
+	  Footer: {
+	    displayName: "Footer"
+	  }
+	};
+
+	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/footer.js",
+	  components: _components,
+	  locals: [module],
+	  imports: [_react3.default]
+	});
+
+	function _wrapComponent(id) {
+	  return function (Component) {
+	    return _reactTransformHmr2(Component, id);
+	  };
+	}
+
+	var Footer = _wrapComponent("Footer")(function (_React$Component) {
+	  _inherits(Footer, _React$Component);
+
+	  function Footer() {
+	    _classCallCheck(this, Footer);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this));
+	  }
+
+	  _createClass(Footer, [{
+	    key: "render",
+	    value: function render() {
+	      return _react3.default.createElement(
+	        "div",
+	        { className: "text-center footer" },
+	        _react3.default.createElement(
+	          "p",
+	          { className: "splitter" },
+	          "___________"
+	        ),
+	        _react3.default.createElement(
+	          "p",
+	          null,
+	          _react3.default.createElement(
+	            "b",
+	            null,
+	            "Contributors"
+	          )
+	        ),
+	        _react3.default.createElement(
+	          "p",
+	          null,
+	          "Aikdanai Sidhikosol"
+	        ),
+	        _react3.default.createElement(
+	          "p",
+	          null,
+	          "Supanut Apikulvanich"
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Footer;
+	}(_react3.default.Component));
+
+	exports.default = Footer;
+	;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

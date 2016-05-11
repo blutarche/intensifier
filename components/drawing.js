@@ -1,54 +1,72 @@
 import React from 'react';
 
-var randomMax = 2;
-var shiftPosition = 0;
-var middleRange = 0;
+var ratio = 1;
+var shiftPosition = [];
+var middle = {x: 0, y: 0};
+var lostScale = {width: 0, height: 0};
 var rotationRound = 0;
-var maxFrame = 3;
-var drawingImage = new Image();
-var ouputImage = new Image();
+var maxFrame = 0;
+var renderImage = new Image();
+var downloadImage = new Image();
+var updateInterval;
+var canvas;
+var context;
+var canvasSize = {width: 0, height: 0};
+
 
 export default class Drawing extends React.Component {
   constructor() {
     super();
-    shiftPosition = randomMax;
-    middleRange = randomMax / 2;
+    this.initValue();
+  }
+
+  initValue() {
+    shiftPosition.push({x: -Math.sqrt(3), y: 1});
+    shiftPosition.push({x: Math.sqrt(3), y: 1});
+    shiftPosition.push({x: 0, y: -2});
+    middle.x = Math.sqrt(3);
+    middle.y = 1;
+    lostScale.width = 2 * Math.sqrt(3);
+    lostScale.height = 3;
+    maxFrame = shiftPosition.length;
+  }
+
+  updatePicture() {
+    renderImage.src = this.props.url;
+    var self = this;
+    renderImage.onload = function() {
+      self.updateCanvas();
+    }
+  }
+
+  initCanvas() {
+    canvas = this.refs.canvas;
+    context = canvas.getContext('2d');
   }
 
   componentDidMount() {
-    this.drawingPicture();
-    setInterval(this.updatePosition.bind(this), 50);
-  }
-
-  drawingPicture() {
-    drawingImage.src = this.props.url;
-  }
+    this.initCanvas();
+    this.updatePicture();
+    updateInterval = setInterval(this.updatePosition.bind(this), 50);
+  } 
 
   componentDidUpdate() {
-    this.drawingPicture();
-    console.log("URL DidUpdate: "+this.nextProps);
+    this.updatePicture();
   }
 
-  componentWillUpdate() {
-    console.log("URL WillUpdate: "+this.props.url);
+  updateCanvas() {
+    canvas.width = renderImage.width - lostScale.width;
+    canvas.height = renderImage.height - lostScale.height;
+    canvasSize = {width: canvas.width, height: canvas.height};
+
   }
 
   updatePosition() {
-    var canvas = this.refs.canvas;
-    canvas.width = drawingImage.width - randomMax;
-    canvas.height = drawingImage.height - randomMax;
-    var ctx = canvas.getContext('2d');
-    var width = canvas.width;
-    var height = canvas.height;
-    shiftPosition *= -1;
-    var shiftPositionX = randomMax * Math.cos(Math.PI * 2 * rotationRound / maxFrame);
-    var shiftPositionY = randomMax * Math.sin(Math.PI * 2 * rotationRound / maxFrame);
-    var x = -middleRange + shiftPositionX;
-    var y = -middleRange + shiftPositionY;
-    var w = width - middleRange;
-    var h = height - middleRange;
-    ctx.clearRect(0, 0, width, height);
-    ctx.drawImage(drawingImage, x, y);
+    var shift = shiftPosition[rotationRound];
+    var x = -middle.x + shift.x;
+    var y = -middle.y + shift.y;
+    context.clearRect(0, 0, canvasSize.width, canvasSize.height);
+    context.drawImage(renderImage, x, y);
     rotationRound = (rotationRound + 1) % maxFrame;
   }
 
