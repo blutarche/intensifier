@@ -11,8 +11,11 @@ export default class Footer extends React.Component {
         <p className="splitter">___________</p>
         <p>
           <b>Contributors</b><br/>
-          Aikdanai Sidhikosol<br/>
-          Supanut Apikulvanich
+          Aikdanai Sidhikosol&nbsp;
+          <a href="https://github.com/blutarche"><i className="fa fa-github"></i></a>
+          <br/>
+          Supanut Apikulvanich&nbsp;
+          <a href="https://github.com/SzNeUrTo"><i className="fa fa-github"></i></a>
         </p>
       </div>
     );
