@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bab79672a19f7ca70016"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aded0c5fe516191833ee"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -674,7 +674,7 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        'div',
-	        { className: 'col-xs-12' },
+	        null,
 	        _react3.default.createElement(_header2.default, null),
 	        _react3.default.createElement(_drawing2.default, null),
 	        _react3.default.createElement(_footer2.default, null)
@@ -25553,7 +25553,7 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: "header text-center" },
+	        { className: "header text-center row" },
 	        _react3.default.createElement(
 	          "h3",
 	          null,
@@ -25776,12 +25776,15 @@
 	      context.drawImage(renderImage, x, y);
 	      rotationRound = (rotationRound + 1) % maxFrame;
 
-	      this.drawText();
+	      this.drawText(context);
 	    }
 	  }, {
 	    key: 'drawText',
-	    value: function drawText() {
+	    value: function drawText(context) {
 	      var msg = this.text;
+	      context.font = "50px Arial";
+	      context.textAlign = "center";
+	      context.fillText(msg, canvasSize.width / 2, canvasSize.height - 50);
 	    }
 	  }, {
 	    key: 'render',
@@ -25927,7 +25930,7 @@
 /* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -25953,12 +25956,12 @@
 
 	var _components = {
 	  TextInput: {
-	    displayName: 'TextInput'
+	    displayName: "TextInput"
 	  }
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/textinput.js',
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/textinput.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25970,7 +25973,7 @@
 	  };
 	}
 
-	var TextInput = _wrapComponent('TextInput')(function (_React$Component) {
+	var TextInput = _wrapComponent("TextInput")(function (_React$Component) {
 	  _inherits(TextInput, _React$Component);
 
 	  function TextInput() {
@@ -25983,25 +25986,31 @@
 	  }
 
 	  _createClass(TextInput, [{
-	    key: 'textChange',
+	    key: "textChange",
 	    value: function textChange(e) {
 	      this.props.textChange(e.target.value);
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return null;
-
-	      // (
-	      //   <div className={this.props.shouldShow ? "form-group" : "hidden"}>
-	      //     <label className="col-sm-4 control-label">
-	      //       <b>Message</b>
-	      //     </label>
-	      //     <div className="text-center col-sm-5">
-	      //       <input type="text" placeholder="[doge intensifies]" className="form-control input-hg" style={{"width": "100%"}} onChange={this.textChange}/>
-	      //     </div>
-	      //   </div>
-	      // );
+	      return _react3.default.createElement(
+	        "div",
+	        { className: this.props.shouldShow ? "form-group" : "hidden" },
+	        _react3.default.createElement(
+	          "label",
+	          { className: "col-sm-4 control-label" },
+	          _react3.default.createElement(
+	            "b",
+	            null,
+	            "Message"
+	          )
+	        ),
+	        _react3.default.createElement(
+	          "div",
+	          { className: "text-center col-sm-5" },
+	          _react3.default.createElement("input", { type: "text", placeholder: "[doge intensifies]", className: "form-control input-hg", style: { "width": "100%" }, onChange: this.textChange })
+	        )
+	      );
 	    }
 	  }]);
 
@@ -26166,7 +26175,7 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: "text-center footer" },
+	        { className: "text-center footer row" },
 	        _react3.default.createElement(
 	          "p",
 	          { className: "splitter" },

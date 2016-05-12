@@ -7,7 +7,7 @@ export default class Footer extends React.Component {
 
   render() {
     return (
-      <div className="text-center footer">
+      <div className="text-center footer row">
         <p className="splitter">___________</p>
         <b>Contributors</b><br/>
         <div className="row text-center">

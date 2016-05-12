@@ -125,12 +125,14 @@ export default class Drawing extends React.Component {
     context.drawImage(renderImage, x, y);
     rotationRound = (rotationRound + 1) % maxFrame;
 
-    this.drawText();
+    this.drawText(context);
   }
 
-  drawText() {
+  drawText(context) {
     var msg = this.text;
-
+    context.font = "50px Arial";
+    context.textAlign = "center";
+    context.fillText(msg, canvasSize.width/2, canvasSize.height-50);
   }
 
   render() {
@@ -148,6 +150,6 @@ export default class Drawing extends React.Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 };
