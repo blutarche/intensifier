@@ -130,7 +130,7 @@ export default class Drawing extends React.Component {
 
   drawText(context) {
     var msg = this.text;
-    context.font = "50px Arial";
+    context.font = "30px Arial";
     context.textAlign = "center";
     context.fillText(msg, canvasSize.width/2, canvasSize.height-50);
   }
