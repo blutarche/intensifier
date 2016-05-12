@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1a02740f41b89159b435"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bab79672a19f7ca70016"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25775,6 +25775,13 @@
 	      context.clearRect(0, 0, canvasSize.width, canvasSize.height);
 	      context.drawImage(renderImage, x, y);
 	      rotationRound = (rotationRound + 1) % maxFrame;
+
+	      this.drawText();
+	    }
+	  }, {
+	    key: 'drawText',
+	    value: function drawText() {
+	      var msg = this.text;
 	    }
 	  }, {
 	    key: 'render',
@@ -26166,17 +26173,46 @@
 	          "___________"
 	        ),
 	        _react3.default.createElement(
-	          "p",
+	          "b",
 	          null,
+	          "Contributors"
+	        ),
+	        _react3.default.createElement("br", null),
+	        _react3.default.createElement(
+	          "div",
+	          { className: "row text-center" },
 	          _react3.default.createElement(
-	            "b",
-	            null,
-	            "Contributors"
+	            "div",
+	            { className: "col-sm-6 text-right" },
+	            "Aikdanai Sidhikosol",
+	            _react3.default.createElement("br", null),
+	            "Supanut Apikulvanich",
+	            _react3.default.createElement("br", null),
+	            "Aphichan Chaiyutthasart",
+	            _react3.default.createElement("br", null)
 	          ),
-	          _react3.default.createElement("br", null),
-	          "Aikdanai Sidhikosol",
-	          _react3.default.createElement("br", null),
-	          "Supanut Apikulvanich"
+	          _react3.default.createElement(
+	            "div",
+	            { className: "col-sm-6 text-left" },
+	            _react3.default.createElement(
+	              "a",
+	              { href: "https://github.com/blutarche" },
+	              _react3.default.createElement("i", { className: "fa fa-github" })
+	            ),
+	            _react3.default.createElement("br", null),
+	            _react3.default.createElement(
+	              "a",
+	              { href: "https://github.com/SzNeUrTo" },
+	              _react3.default.createElement("i", { className: "fa fa-github" })
+	            ),
+	            _react3.default.createElement("br", null),
+	            _react3.default.createElement(
+	              "a",
+	              { href: "https://github.com/ak1103dev" },
+	              _react3.default.createElement("i", { className: "fa fa-github" })
+	            ),
+	            _react3.default.createElement("br", null)
+	          )
 	        )
 	      );
 	    }

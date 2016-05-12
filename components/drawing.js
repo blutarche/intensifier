@@ -124,6 +124,13 @@ export default class Drawing extends React.Component {
     context.clearRect(0, 0, canvasSize.width, canvasSize.height);
     context.drawImage(renderImage, x, y);
     rotationRound = (rotationRound + 1) % maxFrame;
+
+    this.drawText();
+  }
+
+  drawText() {
+    var msg = this.text;
+
   }
 
   render() {
