@@ -33,11 +33,13 @@ export default class Drawing extends React.Component {
   downloadURI(uri, name) {
     let link = document.createElement("a");
     link.download = name;
-    link.href = uri.uri;
+    link.href = uri;
     link.click();
   }
 
   downloadGIF() {
+    let uri = this.generateGIF();
+    this.gifComplete(uri);
     this.downloadURI(downloadURL, "intensifier.gif");
   }
 
@@ -71,8 +73,6 @@ export default class Drawing extends React.Component {
     let self = this;
     renderImage.onload = function() {
       self.updateCanvas();
-      let uri = {uri: self.generateGIF()};
-      self.gifComplete(uri);
     }
   }
 
