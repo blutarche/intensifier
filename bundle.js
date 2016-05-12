@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "aded0c5fe516191833ee"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "46d2835678586c309596"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25672,12 +25672,14 @@
 	    value: function downloadURI(uri, name) {
 	      var link = document.createElement("a");
 	      link.download = name;
-	      link.href = uri.uri;
+	      link.href = uri;
 	      link.click();
 	    }
 	  }, {
 	    key: 'downloadGIF',
 	    value: function downloadGIF() {
+	      var uri = this.generateGIF();
+	      this.gifComplete(uri);
 	      this.downloadURI(downloadURL, "intensifier.gif");
 	    }
 	  }, {
@@ -25716,8 +25718,6 @@
 	      var self = this;
 	      renderImage.onload = function () {
 	        self.updateCanvas();
-	        var uri = { uri: self.generateGIF() };
-	        self.gifComplete(uri);
 	      };
 	    }
 	  }, {
