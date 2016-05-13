@@ -64,6 +64,7 @@ export default class Drawing extends React.Component {
     maxFrame = shiftPosition.length;
     this.vibration = 3;
     this.textSize = 3;
+    // this.rangeValue = {min: 0, max: 0, step: 0};
   }
 
   updatePictureURL(url) {
@@ -71,11 +72,16 @@ export default class Drawing extends React.Component {
     console.log("URL: "+url);
   }
 
+  updateRangeValue() {
+    // this.vibration = {(canvas.height) / this.ratio};
+  }
+
   updatePicture() {
     renderImage.src = this.state.url;
     let self = this;
     renderImage.onload = function() {
       self.updateCanvas();
+      self.updateRangeValue();
     }
   }
 
@@ -133,7 +139,7 @@ export default class Drawing extends React.Component {
 
   getFontSize() {
     console.log("value = " + this.textSize);
-    return this.textSize * 50;
+    return this.textSize * 0.07 * canvasSize.height;
   }
 
   drawText(context) {
