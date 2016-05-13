@@ -33,11 +33,13 @@ export default class Drawing extends React.Component {
   downloadURI(uri, name) {
     let link = document.createElement("a");
     link.download = name;
-    link.href = uri.uri;
+    link.href = uri;
     link.click();
   }
 
   downloadGIF() {
+    let uri = this.generateGIF();
+    this.gifComplete(uri);
     this.downloadURI(downloadURL, "intensifier.gif");
   }
 
@@ -71,8 +73,6 @@ export default class Drawing extends React.Component {
     let self = this;
     renderImage.onload = function() {
       self.updateCanvas();
-      let uri = {uri: self.generateGIF()};
-      self.gifComplete(uri);
     }
   }
 
@@ -124,6 +124,18 @@ export default class Drawing extends React.Component {
     context.clearRect(0, 0, canvasSize.width, canvasSize.height);
     context.drawImage(renderImage, x, y);
     rotationRound = (rotationRound + 1) % maxFrame;
+
+    this.drawText(context);
+  }
+
+  drawText(context) {
+    var msg = this.text;
+    context.font = "30px Arial";
+    context.lineWidth = 4;
+    context.fillStyle = "white";
+    context.textAlign = "center";
+    context.strokeText(msg, canvasSize.width/2, canvasSize.height-50);
+    context.fillText(msg, canvasSize.width/2, canvasSize.height-50);
   }
 
   render() {
@@ -141,6 +153,6 @@ export default class Drawing extends React.Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 };

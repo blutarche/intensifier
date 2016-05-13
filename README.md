@@ -1,4 +1,5 @@
 # intensifier
+Intensifies gif maker [http://aikdanai.com/intensifier/](http://aikdanai.com/intensifier/)
 
 ## How to compile sass
 

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1a02740f41b89159b435"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "46d2835678586c309596"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -674,7 +674,7 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        'div',
-	        { className: 'col-xs-12' },
+	        null,
 	        _react3.default.createElement(_header2.default, null),
 	        _react3.default.createElement(_drawing2.default, null),
 	        _react3.default.createElement(_footer2.default, null)
@@ -25553,7 +25553,7 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: "header text-center" },
+	        { className: "header text-center row" },
 	        _react3.default.createElement(
 	          "h3",
 	          null,
@@ -25672,12 +25672,14 @@
 	    value: function downloadURI(uri, name) {
 	      var link = document.createElement("a");
 	      link.download = name;
-	      link.href = uri.uri;
+	      link.href = uri;
 	      link.click();
 	    }
 	  }, {
 	    key: 'downloadGIF',
 	    value: function downloadGIF() {
+	      var uri = this.generateGIF();
+	      this.gifComplete(uri);
 	      this.downloadURI(downloadURL, "intensifier.gif");
 	    }
 	  }, {
@@ -25716,8 +25718,6 @@
 	      var self = this;
 	      renderImage.onload = function () {
 	        self.updateCanvas();
-	        var uri = { uri: self.generateGIF() };
-	        self.gifComplete(uri);
 	      };
 	    }
 	  }, {
@@ -25775,6 +25775,16 @@
 	      context.clearRect(0, 0, canvasSize.width, canvasSize.height);
 	      context.drawImage(renderImage, x, y);
 	      rotationRound = (rotationRound + 1) % maxFrame;
+
+	      this.drawText(context);
+	    }
+	  }, {
+	    key: 'drawText',
+	    value: function drawText(context) {
+	      var msg = this.text;
+	      context.font = "50px Arial";
+	      context.textAlign = "center";
+	      context.fillText(msg, canvasSize.width / 2, canvasSize.height - 50);
 	    }
 	  }, {
 	    key: 'render',
@@ -25920,7 +25930,7 @@
 /* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -25946,12 +25956,12 @@
 
 	var _components = {
 	  TextInput: {
-	    displayName: 'TextInput'
+	    displayName: "TextInput"
 	  }
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/textinput.js',
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/textinput.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25963,7 +25973,7 @@
 	  };
 	}
 
-	var TextInput = _wrapComponent('TextInput')(function (_React$Component) {
+	var TextInput = _wrapComponent("TextInput")(function (_React$Component) {
 	  _inherits(TextInput, _React$Component);
 
 	  function TextInput() {
@@ -25976,25 +25986,31 @@
 	  }
 
 	  _createClass(TextInput, [{
-	    key: 'textChange',
+	    key: "textChange",
 	    value: function textChange(e) {
 	      this.props.textChange(e.target.value);
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return null;
-
-	      // (
-	      //   <div className={this.props.shouldShow ? "form-group" : "hidden"}>
-	      //     <label className="col-sm-4 control-label">
-	      //       <b>Message</b>
-	      //     </label>
-	      //     <div className="text-center col-sm-5">
-	      //       <input type="text" placeholder="[doge intensifies]" className="form-control input-hg" style={{"width": "100%"}} onChange={this.textChange}/>
-	      //     </div>
-	      //   </div>
-	      // );
+	      return _react3.default.createElement(
+	        "div",
+	        { className: this.props.shouldShow ? "form-group" : "hidden" },
+	        _react3.default.createElement(
+	          "label",
+	          { className: "col-sm-4 control-label" },
+	          _react3.default.createElement(
+	            "b",
+	            null,
+	            "Message"
+	          )
+	        ),
+	        _react3.default.createElement(
+	          "div",
+	          { className: "text-center col-sm-5" },
+	          _react3.default.createElement("input", { type: "text", placeholder: "[doge intensifies]", className: "form-control input-hg", style: { "width": "100%" }, onChange: this.textChange })
+	        )
+	      );
 	    }
 	  }]);
 
@@ -26159,24 +26175,53 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: "text-center footer" },
+	        { className: "text-center footer row" },
 	        _react3.default.createElement(
 	          "p",
 	          { className: "splitter" },
 	          "___________"
 	        ),
 	        _react3.default.createElement(
-	          "p",
+	          "b",
 	          null,
+	          "Contributors"
+	        ),
+	        _react3.default.createElement("br", null),
+	        _react3.default.createElement(
+	          "div",
+	          { className: "row text-center" },
 	          _react3.default.createElement(
-	            "b",
-	            null,
-	            "Contributors"
+	            "div",
+	            { className: "col-sm-6 text-right" },
+	            "Aikdanai Sidhikosol",
+	            _react3.default.createElement("br", null),
+	            "Supanut Apikulvanich",
+	            _react3.default.createElement("br", null),
+	            "Aphichan Chaiyutthasart",
+	            _react3.default.createElement("br", null)
 	          ),
-	          _react3.default.createElement("br", null),
-	          "Aikdanai Sidhikosol",
-	          _react3.default.createElement("br", null),
-	          "Supanut Apikulvanich"
+	          _react3.default.createElement(
+	            "div",
+	            { className: "col-sm-6 text-left" },
+	            _react3.default.createElement(
+	              "a",
+	              { href: "https://github.com/blutarche" },
+	              _react3.default.createElement("i", { className: "fa fa-github" })
+	            ),
+	            _react3.default.createElement("br", null),
+	            _react3.default.createElement(
+	              "a",
+	              { href: "https://github.com/SzNeUrTo" },
+	              _react3.default.createElement("i", { className: "fa fa-github" })
+	            ),
+	            _react3.default.createElement("br", null),
+	            _react3.default.createElement(
+	              "a",
+	              { href: "https://github.com/ak1103dev" },
+	              _react3.default.createElement("i", { className: "fa fa-github" })
+	            ),
+	            _react3.default.createElement("br", null)
+	          )
 	        )
 	      );
 	    }
