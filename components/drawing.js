@@ -153,7 +153,7 @@ export default class Drawing extends React.Component {
   }
 
   getFontSize() {
-    console.log("value = " + this.textSize);
+    // console.log("value = " + this.textSize);
     return this.textSize * 0.07 * canvasSize.height;
   }
 
