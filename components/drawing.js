@@ -140,11 +140,11 @@ export default class Drawing extends React.Component {
   }
 
   rangeVibration(e) {
-    console.log(e);
+    console.log(e.target.value);
   }
 
   rangeText(e) {
-    console.log(e);
+    console.log(e.target.value);
   }
 
   render() {
