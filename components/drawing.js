@@ -62,7 +62,7 @@ export default class Drawing extends React.Component {
     lostScale.width = 2 * Math.sqrt(3);
     lostScale.height = 3;
     maxFrame = shiftPosition.length;
-    this.vibration = 3;
+    this.interval = 3;
     this.textSize = 3;
     // this.rangeValue = {min: 0, max: 0, step: 0};
   }
@@ -97,7 +97,7 @@ export default class Drawing extends React.Component {
   componentDidMount() {
     this.initCanvas();
     this.updatePicture();
-    updateInterval = setInterval(this.updatePosition.bind(this, context), this.getVibrationInterval());
+    updateInterval = setInterval(this.updatePosition.bind(this, context), this.getInterval());
   } 
 
   updateCanvas() {
@@ -126,8 +126,8 @@ export default class Drawing extends React.Component {
     return 'data:image/gif;base64,'+encode64(encoder.stream().getData());
   }
 
-  getVibrationInterval() {
-     return (30) / (this.vibration / 3.0);
+  getInterval() {
+     return (30) / (this.interval / 3.0);
   }
 
   updatePosition(context, isGenGIF) {
@@ -156,11 +156,11 @@ export default class Drawing extends React.Component {
     context.fillText(msg, canvasSize.width/2, canvasSize.height-50);
   }
 
-  rangeVibration(e) {
+  rangeInterval(e) {
     console.log(e.target.value);
-    this.vibration = e.target.value;
+    this.interval = e.target.value;
     clearInterval(updateInterval);
-    updateInterval = setInterval(this.updatePosition.bind(this, context), this.getVibrationInterval());
+    updateInterval = setInterval(this.updatePosition.bind(this, context), this.getInterval());
   }
 
   rangeText(e) {
@@ -178,7 +178,7 @@ export default class Drawing extends React.Component {
             <FileInput updatePicture={this.updatePictureURL.bind(this)} />
             <TextInput textChange={this.textInputChange.bind(this)} shouldShow={this.state.imageUploaded}/>
             <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeText.bind(this)} labelText="TextSize" min={this.minRange} max={this.maxRange} step={this.stepRange} />
-            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} labelText="Speed" min={this.minRange} max={this.maxRange} step={this.stepRange} />
+            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeInterval.bind(this)} labelText="Speed" min={this.minRange} max={this.maxRange} step={this.stepRange} />
             <Download shouldShow={this.state.imageUploaded} downloadGIF={this.downloadGIF.bind(this)} />
           </form>
         </div>
