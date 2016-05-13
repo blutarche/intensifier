@@ -14,7 +14,7 @@ export default class RangeInput extends React.Component {
           <b>{this.props.labelText}</b>
         </label>
         <div className="text-center col-sm-5">
-          <input className={this.props.shouldShow ? "form-group" : "hidden"} type="range" min="0" max="30" onChange={this.props.rangeChange.bind(this)} style={{"marginLeft": "0", "marginRight": "0"}} />
+          <input className={this.props.shouldShow ? "form-group" : "hidden"} type="range" min="1" max="5" step="0.2" onChange={this.props.rangeChange.bind(this)} style={{"marginLeft": "0", "marginRight": "0"}} />
         </div>
       </div>
     )

@@ -62,6 +62,8 @@ export default class Drawing extends React.Component {
     lostScale.width = 2 * Math.sqrt(3);
     lostScale.height = 3;
     maxFrame = shiftPosition.length;
+    this.vibration = 3;
+    this.textSize = 3;
   }
 
   updatePictureURL(url) {
@@ -129,9 +131,14 @@ export default class Drawing extends React.Component {
     this.drawText(context);
   }
 
+  getFontSize() {
+    console.log("value = " + this.textSize);
+    return this.textSize * 50;
+  }
+
   drawText(context) {
     var msg = this.text;
-    context.font = "30px Arial";
+    context.font = this.getFontSize() + "px Arial";
     context.lineWidth = 4;
     context.fillStyle = "white";
     context.textAlign = "center";
@@ -141,14 +148,14 @@ export default class Drawing extends React.Component {
 
   rangeVibration(e) {
     console.log(e.target.value);
+    this.vibration = e.target.value;
   }
 
   rangeText(e) {
-    console.log(e.target.value);
+    this.textSize = e.target.value;
   }
 
   render() {
-    // window.generateGIF = this.generateGIF.bind(this);
     return (
       <div className="row">
         <div className="text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -158,8 +165,8 @@ export default class Drawing extends React.Component {
           <form className="form-horizontal">
             <FileInput updatePicture={this.updatePictureURL.bind(this)} />
             <TextInput textChange={this.textInputChange.bind(this)} shouldShow={this.state.imageUploaded}/>
-            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} labelText="Vibration" />
-            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeText.bind(this)} labelText="TextSize" />
+            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} labelText="Vibration" min={this.minRange} max={this.maxRange} step={this.stepRange} />
+            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeText.bind(this)} labelText="TextSize" min={this.minRange} max={this.maxRange} step={this.stepRange} />
             <Download shouldShow={this.state.imageUploaded} downloadGIF={this.downloadGIF.bind(this)} />
           </form>
         </div>
