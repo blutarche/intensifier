@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7b020798967eea07b8a1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ff119907e1ffe18ca150"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25739,7 +25739,13 @@
 	        _react3.default.createElement(
 	          "h6",
 	          null,
-	          "The most intense gif maker"
+	          "The most ",
+	          _react3.default.createElement(
+	            "b",
+	            null,
+	            "intense"
+	          ),
+	          " gif maker"
 	        )
 	      );
 	    }
@@ -26030,21 +26036,21 @@
 	        { className: 'row' },
 	        _react3.default.createElement(
 	          'div',
-	          { className: 'text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3' },
-	          _react3.default.createElement('canvas', { ref: 'canvas' })
+	          { className: "text-center " + (this.state.imageUploaded ? "col-sm-6" : "col-sm-6 col-sm-offset-3") },
+	          _react3.default.createElement('canvas', { ref: 'canvas' }),
+	          _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePictureURL.bind(this) })
 	        ),
 	        _react3.default.createElement(
 	          'div',
-	          { className: 'col-xs-12' },
+	          { className: this.state.imageUploaded ? "col-sm-6" : "hidden" },
 	          _react3.default.createElement(
 	            'form',
 	            { className: 'form-horizontal' },
-	            _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePictureURL.bind(this) }),
-	            _react3.default.createElement(_textinput2.default, { textChange: this.textInputChange.bind(this), shouldShow: this.state.imageUploaded }),
-	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeText.bind(this), labelText: 'Text size', min: this.minRange, max: this.maxRange, step: this.stepRange }),
-	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeVibration.bind(this), labelText: 'Magnitude', min: this.minRange, max: this.maxRange, step: this.stepRange }),
-	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeInterval.bind(this), labelText: 'Vibrate Speed', min: this.minRange, max: this.maxRange, step: this.stepRange }),
-	            _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded, downloadGIF: this.downloadGIF.bind(this) }),
+	            _react3.default.createElement(_textinput2.default, { textChange: this.textInputChange.bind(this) }),
+	            _react3.default.createElement(_rangeinput2.default, { rangeChange: this.rangeText.bind(this), labelText: 'Text size', min: this.minRange, max: this.maxRange, step: this.stepRange }),
+	            _react3.default.createElement(_rangeinput2.default, { rangeChange: this.rangeVibration.bind(this), labelText: 'Magnitude', min: this.minRange, max: this.maxRange, step: this.stepRange }),
+	            _react3.default.createElement(_rangeinput2.default, { rangeChange: this.rangeInterval.bind(this), labelText: 'Speed', min: this.minRange, max: this.maxRange, step: this.stepRange }),
+	            _react3.default.createElement(_download2.default, { downloadGIF: this.downloadGIF.bind(this) }),
 	            _react3.default.createElement(
 	              'a',
 	              { ref: 'download', href: '#', download: '', className: 'hidden' },
@@ -26149,17 +26155,8 @@
 	        "div",
 	        { className: "form-group" },
 	        _react3.default.createElement(
-	          "label",
-	          { className: "col-sm-4 control-label" },
-	          _react3.default.createElement(
-	            "b",
-	            null,
-	            "Photo"
-	          )
-	        ),
-	        _react3.default.createElement(
 	          "div",
-	          { className: "col-sm-5" },
+	          { className: "text-center" },
 	          _react3.default.createElement(
 	            "button",
 	            { type: "button", className: "btn btn-embossed btn-primary upload", onClick: this.fixFirefox },
@@ -26248,7 +26245,7 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: this.props.shouldShow ? "form-group" : "hidden" },
+	        { className: "form-group" },
 	        _react3.default.createElement(
 	          "label",
 	          { className: "col-sm-4 control-label" },
@@ -26260,7 +26257,7 @@
 	        ),
 	        _react3.default.createElement(
 	          "div",
-	          { className: "text-center col-sm-5" },
+	          { className: "text-center col-sm-8" },
 	          _react3.default.createElement("input", { type: "text", placeholder: "[doge intensifies]", className: "form-control input-hg", style: { "width": "100%" }, onChange: this.textChange })
 	        )
 	      );
@@ -26341,13 +26338,13 @@
 	    value: function render() {
 	      return _react3.default.createElement(
 	        "div",
-	        { className: this.props.shouldShow ? "form-group" : "hidden" },
+	        { className: "form-group", style: { "marginTop": "3em" } },
 	        _react3.default.createElement(
 	          "div",
-	          { className: "col-sm-5 col-sm-offset-4" },
+	          { className: "col-sm-12 text-center" },
 	          _react3.default.createElement(
 	            "button",
-	            { className: "btn btn-hg btn-success btn-embossed upload", onClick: this.onClick.bind(this), style: { "width": "100%" } },
+	            { className: "btn btn-super-hg btn-success btn-embossed", onClick: this.onClick.bind(this) },
 	            _react3.default.createElement(
 	              "b",
 	              null,
@@ -26429,7 +26426,7 @@
 	      console.log(this.props.labelText);
 	      return _react3.default.createElement(
 	        "div",
-	        { className: this.props.shouldShow ? "form-group" : "hidden" },
+	        { className: "form-group" },
 	        _react3.default.createElement(
 	          "label",
 	          { className: "col-sm-4 control-label" },
@@ -26441,8 +26438,8 @@
 	        ),
 	        _react3.default.createElement(
 	          "div",
-	          { className: "text-center col-sm-5" },
-	          _react3.default.createElement("input", { className: this.props.shouldShow ? "form-group" : "hidden", type: "range", min: "1", max: "5", step: "0.2", onChange: this.props.rangeChange.bind(this), style: { "marginTop": "13px" } })
+	          { className: "text-center col-sm-8" },
+	          _react3.default.createElement("input", { className: "form-control", type: "range", min: "1", max: "5", step: "0.2", onChange: this.props.rangeChange.bind(this) })
 	        )
 	      );
 	    }
@@ -26523,45 +26520,37 @@
 	          "___________"
 	        ),
 	        _react3.default.createElement(
-	          "b",
-	          null,
-	          "Contributors"
-	        ),
-	        _react3.default.createElement("br", null),
-	        _react3.default.createElement(
-	          "div",
-	          { className: "row text-center" },
+	          "p",
+	          { className: "description" },
+	          "Intensifier .gif maker · Created by ",
 	          _react3.default.createElement(
-	            "div",
-	            { className: "col-sm-6 text-right" },
-	            "Aikdanai Sidhikosol",
-	            _react3.default.createElement("br", null),
-	            "Supanut Apikulvanich",
-	            _react3.default.createElement("br", null),
-	            "Aphichan Chaiyutthasart",
-	            _react3.default.createElement("br", null)
+	            "a",
+	            { href: "https://twitter.com/aikdanai", target: "_blank" },
+	            "Aikdanai Sidhikosol"
 	          ),
+	          " · ",
 	          _react3.default.createElement(
-	            "div",
-	            { className: "col-sm-6 text-left" },
-	            _react3.default.createElement(
-	              "a",
-	              { href: "https://github.com/blutarche" },
-	              _react3.default.createElement("i", { className: "fa fa-github" })
-	            ),
-	            _react3.default.createElement("br", null),
-	            _react3.default.createElement(
-	              "a",
-	              { href: "https://github.com/SzNeUrTo" },
-	              _react3.default.createElement("i", { className: "fa fa-github" })
-	            ),
-	            _react3.default.createElement("br", null),
-	            _react3.default.createElement(
-	              "a",
-	              { href: "https://github.com/ak1103dev" },
-	              _react3.default.createElement("i", { className: "fa fa-github" })
-	            ),
-	            _react3.default.createElement("br", null)
+	            "a",
+	            { href: "https://github.com/SzNeUrTo", target: "_blank" },
+	            "Supanut Apikulvanich"
+	          ),
+	          " · ",
+	          _react3.default.createElement(
+	            "a",
+	            { href: "https://github.com/ak1103dev", target: "_blank" },
+	            "Apichan Chaiyutthasat"
+	          ),
+	          _react3.default.createElement("br", null),
+	          _react3.default.createElement(
+	            "a",
+	            { href: "https://github.com/blutarche/intensifier", target: "_blank" },
+	            "GitHub Project"
+	          ),
+	          " · ",
+	          _react3.default.createElement(
+	            "a",
+	            { href: "https://github.com/blutarche/intensifier/issues", target: "_blank" },
+	            "Issues"
 	          )
 	        )
 	      );
