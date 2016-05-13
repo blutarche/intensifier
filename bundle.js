@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4363b2ad921e512e3331"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7b020798967eea07b8a1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -648,7 +648,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/Supanut/github/intensifier/components/app.js',
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/app.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25704,7 +25704,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/header.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/header.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25803,7 +25803,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/Supanut/github/intensifier/components/drawing.js',
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/drawing.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -25989,8 +25989,7 @@
 	  }, {
 	    key: 'getFontSize',
 	    value: function getFontSize() {
-	      // console.log("value = " + this.textSize);
-	      return this.textSize * 0.07 * canvasSize.height;
+	      return Math.sqrt(this.textSize) * 0.07 * canvasSize.height;
 	    }
 	  }, {
 	    key: 'drawText',
@@ -26000,8 +25999,8 @@
 	      context.lineWidth = 4;
 	      context.fillStyle = "white";
 	      context.textAlign = "center";
-	      context.strokeText(msg, canvasSize.width / 2, canvasSize.height - 50);
-	      context.fillText(msg, canvasSize.width / 2, canvasSize.height - 50);
+	      context.strokeText(msg, canvasSize.width / 2, canvasSize.height - canvasSize.height / 10);
+	      context.fillText(msg, canvasSize.width / 2, canvasSize.height - canvasSize.height / 10);
 	    }
 	  }, {
 	    key: 'rangeInterval',
@@ -26042,9 +26041,9 @@
 	            { className: 'form-horizontal' },
 	            _react3.default.createElement(_fileinput2.default, { updatePicture: this.updatePictureURL.bind(this) }),
 	            _react3.default.createElement(_textinput2.default, { textChange: this.textInputChange.bind(this), shouldShow: this.state.imageUploaded }),
-	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeText.bind(this), labelText: 'TextSize', min: this.minRange, max: this.maxRange, step: this.stepRange }),
-	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeVibration.bind(this), labelText: 'Vibration', min: this.minRange, max: this.maxRange, step: this.stepRange }),
-	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeInterval.bind(this), labelText: 'Speed', min: this.minRange, max: this.maxRange, step: this.stepRange }),
+	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeText.bind(this), labelText: 'Text size', min: this.minRange, max: this.maxRange, step: this.stepRange }),
+	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeVibration.bind(this), labelText: 'Magnitude', min: this.minRange, max: this.maxRange, step: this.stepRange }),
+	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeInterval.bind(this), labelText: 'Vibrate Speed', min: this.minRange, max: this.maxRange, step: this.stepRange }),
 	            _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded, downloadGIF: this.downloadGIF.bind(this) }),
 	            _react3.default.createElement(
 	              'a',
@@ -26099,7 +26098,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/fileinput.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/fileinput.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -26215,7 +26214,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/textinput.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/textinput.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -26310,7 +26309,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/download.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/download.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -26403,7 +26402,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/rangeinput.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/rangeinput.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -26443,7 +26442,7 @@
 	        _react3.default.createElement(
 	          "div",
 	          { className: "text-center col-sm-5" },
-	          _react3.default.createElement("input", { className: this.props.shouldShow ? "form-group" : "hidden", type: "range", min: "1", max: "5", step: "0.2", onChange: this.props.rangeChange.bind(this), style: { "marginLeft": "0", "marginRight": "0" } })
+	          _react3.default.createElement("input", { className: this.props.shouldShow ? "form-group" : "hidden", type: "range", min: "1", max: "5", step: "0.2", onChange: this.props.rangeChange.bind(this), style: { "marginTop": "13px" } })
 	        )
 	      );
 	    }
@@ -26491,7 +26490,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/Supanut/github/intensifier/components/footer.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/footer.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
