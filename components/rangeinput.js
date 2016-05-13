@@ -9,12 +9,12 @@ export default class RangeInput extends React.Component {
   render() {
     console.log(this.props.labelText);
     return (
-      <div className={this.props.shouldShow ? "form-group" : "hidden"}>
+      <div className="form-group">
         <label className="col-sm-4 control-label"> 
           <b>{this.props.labelText}</b>
         </label>
-        <div className="text-center col-sm-5">
-          <input className={this.props.shouldShow ? "form-group" : "hidden"} type="range" min="1" max="5" step="0.2" onChange={this.props.rangeChange.bind(this)} style={{"marginLeft": "0", "marginRight": "0"}} />
+        <div className="text-center col-sm-8">
+          <input className="form-control" type="range" min="1" max="5" step="0.2" onChange={this.props.rangeChange.bind(this)}/>
         </div>
       </div>
     )
