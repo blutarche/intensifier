@@ -97,7 +97,7 @@ export default class Drawing extends React.Component {
   componentDidMount() {
     this.initCanvas();
     this.updatePicture();
-    updateInterval = setInterval(this.updatePosition.bind(this, context), 30);
+    updateInterval = setInterval(this.updatePosition.bind(this, context), this.getVibrationInterval());
   } 
 
   updateCanvas() {
@@ -124,6 +124,10 @@ export default class Drawing extends React.Component {
     encoder.finish();
     // document.getElementById('imageTagID').src = 'data:image/gif;base64,'+encode64(encoder.stream().getData());
     return 'data:image/gif;base64,'+encode64(encoder.stream().getData());
+  }
+
+  getVibrationInterval() {
+     return (30) / (this.vibration / 3.0);
   }
 
   updatePosition(context, isGenGIF) {
@@ -155,6 +159,8 @@ export default class Drawing extends React.Component {
   rangeVibration(e) {
     console.log(e.target.value);
     this.vibration = e.target.value;
+    clearInterval(updateInterval);
+    updateInterval = setInterval(this.updatePosition.bind(this, context), this.getVibrationInterval());
   }
 
   rangeText(e) {
@@ -171,7 +177,7 @@ export default class Drawing extends React.Component {
           <form className="form-horizontal">
             <FileInput updatePicture={this.updatePictureURL.bind(this)} />
             <TextInput textChange={this.textInputChange.bind(this)} shouldShow={this.state.imageUploaded}/>
-            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} labelText="Vibration" min={this.minRange} max={this.maxRange} step={this.stepRange} />
+            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} labelText="Speed" min={this.minRange} max={this.maxRange} step={this.stepRange} />
             <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeText.bind(this)} labelText="TextSize" min={this.minRange} max={this.maxRange} step={this.stepRange} />
             <Download shouldShow={this.state.imageUploaded} downloadGIF={this.downloadGIF.bind(this)} />
           </form>
