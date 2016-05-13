@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7d290e8afef9a3b76490"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4363b2ad921e512e3331"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25851,7 +25851,7 @@
 	  _createClass(Drawing, [{
 	    key: 'downloadURI',
 	    value: function downloadURI(uri, name) {
-	      var link = document.createElement("a");
+	      var link = this.refs.download;
 	      link.download = name;
 	      link.href = uri;
 	      link.click();
@@ -25989,7 +25989,7 @@
 	  }, {
 	    key: 'getFontSize',
 	    value: function getFontSize() {
-	      console.log("value = " + this.textSize);
+	      // console.log("value = " + this.textSize);
 	      return this.textSize * 0.07 * canvasSize.height;
 	    }
 	  }, {
@@ -26045,7 +26045,12 @@
 	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeText.bind(this), labelText: 'TextSize', min: this.minRange, max: this.maxRange, step: this.stepRange }),
 	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeVibration.bind(this), labelText: 'Vibration', min: this.minRange, max: this.maxRange, step: this.stepRange }),
 	            _react3.default.createElement(_rangeinput2.default, { shouldShow: this.state.imageUploaded, rangeChange: this.rangeInterval.bind(this), labelText: 'Speed', min: this.minRange, max: this.maxRange, step: this.stepRange }),
-	            _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded, downloadGIF: this.downloadGIF.bind(this) })
+	            _react3.default.createElement(_download2.default, { shouldShow: this.state.imageUploaded, downloadGIF: this.downloadGIF.bind(this) }),
+	            _react3.default.createElement(
+	              'a',
+	              { ref: 'download', href: '#', download: '', className: 'hidden' },
+	              'Download'
+	            )
 	          )
 	        )
 	      );
@@ -26115,6 +26120,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FileInput).call(this));
 
 	    _this.fileChange = _this.fileChange.bind(_this);
+	    _this.fixFirefox = _this.fixFirefox.bind(_this);
 	    return _this;
 	  }
 
@@ -26123,12 +26129,19 @@
 	    value: function fileChange(e) {
 	      var reader = new FileReader();
 	      var file = e.target.files[0];
-	      var url = URL.createObjectURL(file);
-	      if (url) {
+	      var url = void 0;
+	      if (file) {
+	        url = URL.createObjectURL(file);
 	        console.log("fileChange URL: " + url);
 	        this.props.updatePicture(url);
 	        window.file = file;
 	      }
+	    }
+	  }, {
+	    key: "fixFirefox",
+	    value: function fixFirefox(e) {
+	      this.refs.photo.click();
+	      // e.preventDefault();
 	    }
 	  }, {
 	    key: "render",
@@ -26150,11 +26163,11 @@
 	          { className: "col-sm-5" },
 	          _react3.default.createElement(
 	            "button",
-	            { className: "btn btn-embossed btn-primary upload" },
+	            { type: "button", className: "btn btn-embossed btn-primary upload", onClick: this.fixFirefox },
 	            _react3.default.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
-	            " Upload photo",
-	            _react3.default.createElement("input", { ref: "photo", type: "file", name: "picture", accept: "image/*", onChange: this.fileChange })
-	          )
+	            " Upload photo"
+	          ),
+	          _react3.default.createElement("input", { className: "hidden", id: "photo", ref: "photo", type: "file", name: "picture", accept: "image/*", onChange: this.fileChange })
 	        )
 	      );
 	    }
