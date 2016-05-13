@@ -5,17 +5,24 @@ export default class FileInput extends React.Component {
   constructor() {
     super();
     this.fileChange = this.fileChange.bind(this);
+    this.fixFirefox = this.fixFirefox.bind(this);
   }
 
   fileChange(e) {
     var reader = new FileReader();
     var file = e.target.files[0];
-    var url = URL.createObjectURL(file);
-    if (url) {
+    let url;
+    if (file) {
+      url = URL.createObjectURL(file);
       console.log("fileChange URL: "+url);
       this.props.updatePicture(url);
       window.file = file;
     }
+  }
+
+  fixFirefox(e) {
+    this.refs.photo.click()
+    // e.preventDefault();
   }
 
   render() {
@@ -25,10 +32,10 @@ export default class FileInput extends React.Component {
           <b>Photo</b>
         </label>
         <div className="col-sm-5">
-          <button className="btn btn-embossed btn-primary upload">
+          <button type="button" className="btn btn-embossed btn-primary upload" onClick={this.fixFirefox}>
             <i className="fa fa-picture-o" aria-hidden="true"></i> Upload photo
-            <input ref="photo" type="file" name="picture" accept="image/*" onChange={this.fileChange} />
           </button>
+          <input className="hidden" id="photo" ref="photo" type="file" name="picture" accept="image/*" onChange={this.fileChange} />
         </div>
       </div>
     );
