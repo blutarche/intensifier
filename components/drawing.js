@@ -177,8 +177,8 @@ export default class Drawing extends React.Component {
           <form className="form-horizontal">
             <FileInput updatePicture={this.updatePictureURL.bind(this)} />
             <TextInput textChange={this.textInputChange.bind(this)} shouldShow={this.state.imageUploaded}/>
-            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} labelText="Speed" min={this.minRange} max={this.maxRange} step={this.stepRange} />
             <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeText.bind(this)} labelText="TextSize" min={this.minRange} max={this.maxRange} step={this.stepRange} />
+            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} labelText="Speed" min={this.minRange} max={this.maxRange} step={this.stepRange} />
             <Download shouldShow={this.state.imageUploaded} downloadGIF={this.downloadGIF.bind(this)} />
           </form>
         </div>
