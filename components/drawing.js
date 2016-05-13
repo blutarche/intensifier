@@ -32,7 +32,7 @@ export default class Drawing extends React.Component {
   }
 
   downloadURI(uri, name) {
-    let link = document.createElement("a");
+    let link = this.refs.download;
     link.download = name;
     link.href = uri;
     link.click();
@@ -198,6 +198,7 @@ export default class Drawing extends React.Component {
             <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} labelText="Vibration" min={this.minRange} max={this.maxRange} step={this.stepRange} />
             <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeInterval.bind(this)} labelText="Speed" min={this.minRange} max={this.maxRange} step={this.stepRange} />
             <Download shouldShow={this.state.imageUploaded} downloadGIF={this.downloadGIF.bind(this)} />
+            <a ref="download" href="#" download="" className="hidden">Download</a>
           </form>
         </div>
       </div>
