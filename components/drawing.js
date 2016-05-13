@@ -2,6 +2,7 @@ import React from 'react';
 import FileInput from './fileinput';
 import TextInput from './textinput';
 import Download from './download';
+import RangeInput from './rangeinput';
 
 var ratio = 1;
 var shiftPosition = [];
@@ -138,6 +139,14 @@ export default class Drawing extends React.Component {
     context.fillText(msg, canvasSize.width/2, canvasSize.height-50);
   }
 
+  rangeVibration(e) {
+    console.log(e);
+  }
+
+  rangeText(e) {
+    console.log(e);
+  }
+
   render() {
     // window.generateGIF = this.generateGIF.bind(this);
     return (
@@ -149,6 +158,8 @@ export default class Drawing extends React.Component {
           <form className="form-horizontal">
             <FileInput updatePicture={this.updatePictureURL.bind(this)} />
             <TextInput textChange={this.textInputChange.bind(this)} shouldShow={this.state.imageUploaded}/>
+            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeVibration.bind(this)} />
+            <RangeInput shouldShow={this.state.imageUploaded} rangeChange={this.rangeText.bind(this)} />
             <Download shouldShow={this.state.imageUploaded} downloadGIF={this.downloadGIF.bind(this)} />
           </form>
         </div>
