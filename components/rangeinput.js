@@ -7,6 +7,7 @@ export default class RangeInput extends React.Component {
   }
 
   render() {
+    console.log(this.props.labelText);
     return (
       <div className="form-group">
         <label className="col-sm-4 control-label"> 
