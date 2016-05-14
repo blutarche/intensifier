@@ -7,19 +7,14 @@
     "start": "./node_modules/.bin/webpack-dev-server --inline --hot --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": {
-    "name": "Aikdanai Sidhikosol"
-  },
+  "author": {"name": "Aikdanai Sidhikosol"},
   "contributors": [
-    {
-      "name": "Supanut Apikulvanich"
-    }
+	  {"name": "Supanut Apikulvanich"}
   ],
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.11.2",
-    "react": "^0.14.6",
-    "react-color": "^2.1.0"
+    "react": "^0.14.6"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
@@ -33,10 +28,10 @@
     "webpack-dev-server": "^1.14.1"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/blutarche/intensifier.git"
+	  "type" : "git",
+	  "url" : "https://github.com/blutarche/intensifier.git"
   },
   "keywords": [
-    "intensifier"
+  	"intensifier"
   ]
 }

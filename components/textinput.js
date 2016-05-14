@@ -14,10 +14,10 @@ export default class TextInput extends React.Component {
     return (
       <div className="form-group">
         <label className="col-sm-4 control-label"> 
-          <b>Text</b>
+          <b>Message</b>
         </label>
         <div className="text-center col-sm-8">
-          <input type="text" placeholder="[doge intensifies]" className="form-control input-lg" style={{"width": "100%"}} onChange={this.textChange}/>
+          <input type="text" placeholder="[doge intensifies]" className="form-control input-hg" style={{"width": "100%"}} onChange={this.textChange}/>
         </div>
       </div>
     );
