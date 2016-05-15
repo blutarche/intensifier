@@ -81,16 +81,11 @@ export default class Drawing extends React.Component {
     this.interval = 3;
     this.setScale(this.getVibrationRatio());
     maxFrame = shiftPosition.length;
-    // this.rangeValue = {min: 0, max: 0, step: 0};
   }
 
   updatePictureURL(url) {
     this.setState({url: url, imageUploaded: true, downloadURL: ''});
     console.log("URL: "+url);
-  }
-
-  updateRangeValue() {
-    // this.vibration = {(canvas.height) / this.ratio};
   }
 
   updatePicture() {
