@@ -93,7 +93,6 @@ export default class Drawing extends React.Component {
     let self = this;
     renderImage.onload = function() {
       self.updateCanvas();
-      self.updateRangeValue();
     }
   }
 
