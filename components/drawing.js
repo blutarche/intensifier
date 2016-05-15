@@ -178,7 +178,7 @@ export default class Drawing extends React.Component {
   drawText(context) {
     var msg = this.text;
     context.font = this.getFontSize() + "px Arial";
-    context.lineWidth = 8;
+    context.lineWidth = 6;
     context.textAlign = "center"
     context.fillStyle = getRGBAstring(this.textColor);
     context.strokeStyle = getRGBAstring(this.strokeColor);
@@ -242,7 +242,7 @@ function hexToRgb(hex) {
 
 function getRGBAstring(colorObj) {
   var rgb = hexToRgb(colorObj.color);
-  var r = rgb.r, g=rgb.b, b=rgb.b;
+  var r = rgb.r, g=rgb.g, b=rgb.b;
   var a = colorObj.alpha/100.0;
   var str = "rgba("+r+", "+g+", "+b+", "+a+")";
   return str;
