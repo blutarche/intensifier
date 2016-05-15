@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0f602b4b1f8a86c704ac"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "52003f51cb7bea20bf2b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -35438,7 +35438,7 @@
 /* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -35464,12 +35464,12 @@
 
 	var _components = {
 	  Footer: {
-	    displayName: "Footer"
+	    displayName: 'Footer'
 	  }
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/footer.js",
+	  filename: '/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/footer.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -35481,58 +35481,95 @@
 	  };
 	}
 
-	var Footer = _wrapComponent("Footer")(function (_React$Component) {
+	var Footer = _wrapComponent('Footer')(function (_React$Component) {
 	  _inherits(Footer, _React$Component);
 
 	  function Footer() {
 	    _classCallCheck(this, Footer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this));
+
+	    _this.state = {
+	      pageviews: 0
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Footer, [{
-	    key: "render",
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getPageViews();
+	    }
+	  }, {
+	    key: 'getPageViews',
+	    value: function getPageViews() {
+	      var views = document.getElementById("pageviews").innerHTML;
+	      views = views.replace(/[\r\n]/g, '');
+	      views = views.replace(/<script.*<\/script>/g, '');
+	      views = views.replace(/<noscript.*<\/noscript>/g, '');
+	      views = views.replace(/[ ]*/g, '');
+	      this.setState({ pageviews: views });
+	      console.log("Page views: " + views);
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react3.default.createElement(
-	        "div",
-	        { className: "text-center footer row" },
+	        'div',
+	        { className: 'text-center footer row' },
 	        _react3.default.createElement(
-	          "p",
-	          { className: "splitter" },
-	          "___________"
+	          'p',
+	          { className: 'splitter' },
+	          '___________'
 	        ),
 	        _react3.default.createElement(
-	          "p",
-	          { className: "description" },
-	          "Intensifier .gif maker · Created by ",
+	          'p',
+	          { className: 'viewers' },
 	          _react3.default.createElement(
-	            "a",
-	            { href: "https://twitter.com/aikdanai", target: "_blank" },
-	            "Aikdanai Sidhikosol"
+	            'b',
+	            null,
+	            this.state.pageviews
 	          ),
-	          " · ",
+	          ' users visited us!',
+	          _react3.default.createElement('br', null),
 	          _react3.default.createElement(
-	            "a",
-	            { href: "https://github.com/SzNeUrTo", target: "_blank" },
-	            "Supanut Apikulvanich"
+	            'a',
+	            { href: 'http://statcounter.com/', target: '_blank' },
+	            _react3.default.createElement('img', { src: 'http://www.statcounter.com/images/button4.png', alt: 'Site Stats', width: '80', height: '15', border: '0' })
+	          )
+	        ),
+	        _react3.default.createElement(
+	          'p',
+	          { className: 'description' },
+	          'Intensifier .gif maker · Created by ',
+	          _react3.default.createElement(
+	            'a',
+	            { href: 'https://twitter.com/aikdanai', target: '_blank' },
+	            'Aikdanai Sidhikosol'
 	          ),
-	          " · ",
+	          ' · ',
 	          _react3.default.createElement(
-	            "a",
-	            { href: "https://github.com/ak1103dev", target: "_blank" },
-	            "Apichan Chaiyutthasat"
+	            'a',
+	            { href: 'https://github.com/SzNeUrTo', target: '_blank' },
+	            'Supanut Apikulvanich'
 	          ),
-	          _react3.default.createElement("br", null),
+	          ' · ',
 	          _react3.default.createElement(
-	            "a",
-	            { href: "https://github.com/blutarche/intensifier", target: "_blank" },
-	            "GitHub Project"
+	            'a',
+	            { href: 'https://github.com/ak1103dev', target: '_blank' },
+	            'Apichan Chaiyutthasat'
 	          ),
-	          " · ",
+	          _react3.default.createElement('br', null),
 	          _react3.default.createElement(
-	            "a",
-	            { href: "https://github.com/blutarche/intensifier/issues", target: "_blank" },
-	            "Issues"
+	            'a',
+	            { href: 'https://github.com/blutarche/intensifier', target: '_blank' },
+	            'GitHub Project'
+	          ),
+	          ' · ',
+	          _react3.default.createElement(
+	            'a',
+	            { href: 'https://github.com/blutarche/intensifier/issues', target: '_blank' },
+	            'Issues'
 	          )
 	        )
 	      );
