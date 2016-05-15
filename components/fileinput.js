@@ -21,8 +21,7 @@ export default class FileInput extends React.Component {
   }
 
   fixFirefox(e) {
-    this.refs.photo.click()
-    // e.preventDefault();
+    this.refs.photo.click();
   }
 
   render() {
