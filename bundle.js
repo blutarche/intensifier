@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "79ceb4fd91f91e11d4f3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ae3af57e91e304b22461"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -9948,7 +9948,6 @@
 	      this.interval = 3;
 	      this.setScale(this.getVibrationRatio());
 	      maxFrame = shiftPosition.length;
-	      // this.rangeValue = {min: 0, max: 0, step: 0};
 	    }
 	  }, {
 	    key: 'updatePictureURL',
@@ -9957,18 +9956,12 @@
 	      console.log("URL: " + url);
 	    }
 	  }, {
-	    key: 'updateRangeValue',
-	    value: function updateRangeValue() {
-	      // this.vibration = {(canvas.height) / this.ratio};
-	    }
-	  }, {
 	    key: 'updatePicture',
 	    value: function updatePicture() {
 	      renderImage.src = this.state.url;
 	      var self = this;
 	      renderImage.onload = function () {
 	        self.updateCanvas();
-	        self.updateRangeValue();
 	      };
 	    }
 	  }, {
@@ -10230,7 +10223,6 @@
 	    key: "fixFirefox",
 	    value: function fixFirefox(e) {
 	      this.refs.photo.click();
-	      // e.preventDefault();
 	    }
 	  }, {
 	    key: "render",
