@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "68b42dc1cc9b77343c4f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "385343d0a0fed4399698"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -10451,6 +10451,16 @@
 	              null,
 	              _react3.default.createElement("i", { className: "fa fa-download", "aria-hidden": "true" }),
 	              " Download"
+	            )
+	          ),
+	          _react3.default.createElement(
+	            "p",
+	            { className: "tip" },
+	            "If you wanna share your picture on facebook, since they don't allowed uploading your own .gif picture, I recommend upload&share a link from this awesome site: ",
+	            _react3.default.createElement(
+	              "a",
+	              { href: "http://giphy.com/upload", target: "_blank" },
+	              "Giphy"
 	            )
 	          )
 	        )
