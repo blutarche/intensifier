@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1f4d4bef094ec81bc879"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "68b42dc1cc9b77343c4f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -10055,14 +10055,14 @@
 	  }, {
 	    key: 'drawCreditText',
 	    value: function drawCreditText(context) {
-	      var msg = "© aikdanai.com";
+	      var msg = "© aikdanai.com/intensifier";
 	      var fontSize = 0.05 * canvasSize.height;
 	      context.font = fontSize + "px Arial";
 	      var strokeSize = 0.007 * canvasSize.height;
 	      context.textAlign = "end";
 	      context.lineWidth = strokeSize;
-	      context.fillStyle = "rgba(255,255,255,0.3)";
-	      context.strokeStyle = "rgba(0,0,0,0.3)";
+	      context.fillStyle = "rgba(255,255,255,0.4)";
+	      context.strokeStyle = "rgba(0,0,0,0.4)";
 	      context.strokeText(msg, canvasSize.width * 0.99, canvasSize.height * 0.99);
 	      context.fillText(msg, canvasSize.width * 0.99, canvasSize.height * 0.99);
 	    }
@@ -35953,9 +35953,9 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _sharefacebook = __webpack_require__(395);
+	var _sharesocial = __webpack_require__(395);
 
-	var _sharefacebook2 = _interopRequireDefault(_sharefacebook);
+	var _sharesocial2 = _interopRequireDefault(_sharesocial);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36043,8 +36043,8 @@
 	        ),
 	        _react3.default.createElement(
 	          'p',
-	          { className: 'viewers' },
-	          _react3.default.createElement(_sharefacebook2.default, null)
+	          { className: 'viewers', style: { display: "inline-block" } },
+	          _react3.default.createElement(_sharesocial2.default, null)
 	        ),
 	        _react3.default.createElement(
 	          'p',
@@ -36120,13 +36120,13 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _components = {
-	  ShareFacebook: {
-	    displayName: "ShareFacebook"
+	  ShareSocial: {
+	    displayName: "ShareSocial"
 	  }
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/sharefacebook.js",
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/sharesocial.js",
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -36138,26 +36138,39 @@
 	  };
 	}
 
-	var ShareFacebook = _wrapComponent("ShareFacebook")(function (_React$Component) {
-	  _inherits(ShareFacebook, _React$Component);
+	var ShareSocial = _wrapComponent("ShareSocial")(function (_React$Component) {
+	  _inherits(ShareSocial, _React$Component);
 
-	  function ShareFacebook() {
-	    _classCallCheck(this, ShareFacebook);
+	  function ShareSocial() {
+	    _classCallCheck(this, ShareSocial);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ShareFacebook).call(this));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ShareSocial).call(this));
 	  }
 
-	  _createClass(ShareFacebook, [{
+	  _createClass(ShareSocial, [{
 	    key: "render",
 	    value: function render() {
-	      return _react3.default.createElement("div", { className: "fb-share-button", "data-href": "http://aikdanai.com/intensifier/", "data-layout": "button_count", "data-mobile-iframe": "false" });
+	      return _react3.default.createElement(
+	        "div",
+	        { className: "text-center" },
+	        _react3.default.createElement("div", { className: "fb-share-button", "data-href": "http://aikdanai.com/intensifier/", "data-layout": "button_count", "data-mobile-iframe": "false" }),
+	        _react3.default.createElement(
+	          "div",
+	          { style: { marginLeft: "20px", display: "inline", top: "8px", position: "relative" } },
+	          _react3.default.createElement(
+	            "a",
+	            { href: "https://twitter.com/share", className: "twitter-share-button", "data-via": "aikdanai", "data-hashtags": "intensifies" },
+	            "Tweet"
+	          )
+	        )
+	      );
 	    }
 	  }]);
 
-	  return ShareFacebook;
+	  return ShareSocial;
 	}(_react3.default.Component));
 
-	exports.default = ShareFacebook;
+	exports.default = ShareSocial;
 	;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 

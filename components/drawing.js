@@ -174,14 +174,14 @@ export default class Drawing extends React.Component {
   }
 
   drawCreditText(context) {
-    var msg = "© aikdanai.com"
+    var msg = "© aikdanai.com/intensifier"
     var fontSize = 0.05 * canvasSize.height;
     context.font = fontSize + "px Arial";
     var strokeSize = 0.007 * canvasSize.height;
     context.textAlign = "end"
     context.lineWidth = strokeSize;
-    context.fillStyle = "rgba(255,255,255,0.3)";
-    context.strokeStyle = "rgba(0,0,0,0.3)";
+    context.fillStyle = "rgba(255,255,255,0.4)";
+    context.strokeStyle = "rgba(0,0,0,0.4)";
     context.strokeText(msg, canvasSize.width*0.99, canvasSize.height*0.99);
     context.fillText(msg, canvasSize.width*0.99, canvasSize.height*0.99);
   }
