@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ae3af57e91e304b22461"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1f4d4bef094ec81bc879"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -10033,6 +10033,11 @@
 	      return Math.sqrt(this.textSize) * 0.07 * canvasSize.height;
 	    }
 	  }, {
+	    key: 'getStrokeSize',
+	    value: function getStrokeSize() {
+	      return 0.01 * canvasSize.height;
+	    }
+	  }, {
 	    key: 'rangeInterval',
 	    value: function rangeInterval(e) {
 	      console.log(e.target.value);
@@ -10048,16 +10053,31 @@
 	      this.updateCanvas();
 	    }
 	  }, {
+	    key: 'drawCreditText',
+	    value: function drawCreditText(context) {
+	      var msg = "© aikdanai.com";
+	      var fontSize = 0.05 * canvasSize.height;
+	      context.font = fontSize + "px Arial";
+	      var strokeSize = 0.007 * canvasSize.height;
+	      context.textAlign = "end";
+	      context.lineWidth = strokeSize;
+	      context.fillStyle = "rgba(255,255,255,0.3)";
+	      context.strokeStyle = "rgba(0,0,0,0.3)";
+	      context.strokeText(msg, canvasSize.width * 0.99, canvasSize.height * 0.99);
+	      context.fillText(msg, canvasSize.width * 0.99, canvasSize.height * 0.99);
+	    }
+	  }, {
 	    key: 'drawText',
 	    value: function drawText(context) {
 	      var msg = this.text;
 	      context.font = this.getFontSize() + "px Arial";
-	      context.lineWidth = 6;
+	      context.lineWidth = this.getStrokeSize();
 	      context.textAlign = "center";
 	      context.fillStyle = getRGBAstring(this.textColor);
 	      context.strokeStyle = getRGBAstring(this.strokeColor);
 	      context.strokeText(msg, canvasSize.width / 2, canvasSize.height - canvasSize.height / 10);
 	      context.fillText(msg, canvasSize.width / 2, canvasSize.height - canvasSize.height / 10);
+	      this.drawCreditText(context);
 	    }
 	  }, {
 	    key: 'textInputChange',
@@ -10233,6 +10253,11 @@
 	        _react3.default.createElement(
 	          "div",
 	          { className: "text-center" },
+	          _react3.default.createElement(
+	            "p",
+	            { className: "tip" },
+	            "*more resolution yields better result"
+	          ),
 	          _react3.default.createElement(
 	            "button",
 	            { type: "button", className: "btn btn-embossed btn-primary upload", onClick: this.fixFirefox },
@@ -35928,6 +35953,10 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _sharefacebook = __webpack_require__(395);
+
+	var _sharefacebook2 = _interopRequireDefault(_sharefacebook);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36014,6 +36043,11 @@
 	        ),
 	        _react3.default.createElement(
 	          'p',
+	          { className: 'viewers' },
+	          _react3.default.createElement(_sharefacebook2.default, null)
+	        ),
+	        _react3.default.createElement(
+	          'p',
 	          { className: 'description' },
 	          'Intensifier .gif maker · Created by ',
 	          _react3.default.createElement(
@@ -36054,6 +36088,76 @@
 	}(_react3.default.Component));
 
 	exports.default = Footer;
+	;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 395 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react2 = __webpack_require__(3);
+
+	var _react3 = _interopRequireDefault(_react2);
+
+	var _reactTransformHmr3 = __webpack_require__(35);
+
+	var _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _components = {
+	  ShareFacebook: {
+	    displayName: "ShareFacebook"
+	  }
+	};
+
+	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
+	  filename: "/Users/blutarche/Project/dev.aikdanai.com/intensifier/components/sharefacebook.js",
+	  components: _components,
+	  locals: [module],
+	  imports: [_react3.default]
+	});
+
+	function _wrapComponent(id) {
+	  return function (Component) {
+	    return _reactTransformHmr2(Component, id);
+	  };
+	}
+
+	var ShareFacebook = _wrapComponent("ShareFacebook")(function (_React$Component) {
+	  _inherits(ShareFacebook, _React$Component);
+
+	  function ShareFacebook() {
+	    _classCallCheck(this, ShareFacebook);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ShareFacebook).call(this));
+	  }
+
+	  _createClass(ShareFacebook, [{
+	    key: "render",
+	    value: function render() {
+	      return _react3.default.createElement("div", { className: "fb-share-button", "data-href": "http://aikdanai.com/intensifier/", "data-layout": "button_count", "data-mobile-iframe": "false" });
+	    }
+	  }]);
+
+	  return ShareFacebook;
+	}(_react3.default.Component));
+
+	exports.default = ShareFacebook;
 	;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 

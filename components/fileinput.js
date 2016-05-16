@@ -28,6 +28,7 @@ export default class FileInput extends React.Component {
     return (
       <div className="form-group">
         <div className="text-center">
+          <p className="tip">*more resolution yields better result</p>
           <button type="button" className="btn btn-embossed btn-primary upload" onClick={this.fixFirefox}>
             <i className="fa fa-picture-o" aria-hidden="true"></i> Upload photo
           </button>
