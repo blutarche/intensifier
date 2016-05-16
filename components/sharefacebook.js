@@ -7,7 +7,7 @@ export default class ShareFacebook extends React.Component {
 
   render() {
     return (
-      <div className="fb-share-button" data-href="http://dev.aikdanai.com/intensifier/" data-layout="button_count" data-mobile-iframe="false"></div>
+      <div className="fb-share-button" data-href="http://aikdanai.com/intensifier/" data-layout="button_count" data-mobile-iframe="false"></div>
     );
   }
 };
