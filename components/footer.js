@@ -1,4 +1,5 @@
 import React from 'react';
+import ShareFacebook from './sharefacebook';
 
 export default class Footer extends React.Component {
   constructor() {
@@ -29,6 +30,9 @@ export default class Footer extends React.Component {
         <p className="viewers">
           <b>{this.state.pageviews}</b> users visited us!<br />
           <a href="http://statcounter.com/" target="_blank"><img src="http://www.statcounter.com/images/button4.png" alt="Site Stats" width="80" height="15" border="0" /></a>
+        </p>
+        <p className="viewers">
+          <ShareFacebook />
         </p>
         <p className="description">
         Intensifier .gif maker · Created by&nbsp;
